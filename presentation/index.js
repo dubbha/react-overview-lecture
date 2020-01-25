@@ -29,6 +29,9 @@ import createTheme from '../assets/theme';
 const imageFileNames = [
   'chernobyl.jpg',
   'react.svg',
+  'routes.webp',
+  'books.png',
+  'orly.png',
   'useYourBrain.webp',
   'marvel.jpg',
   'karloff.webp',
@@ -80,7 +83,6 @@ const reqSource = name => ({ [name.split('.')[0]]: require(`../assets/code/${nam
 const sources = sourceFileNames.reduce((acc, name) => ({ ...acc, ...reqSource(name) }), {});
 
 const videos = {
-  useYourBrain: require('../assets/useYourBrain.webm'),
   separationOfConcerns: require('../assets/separationOfConcerns.mp4'),
 };
 
@@ -236,13 +238,36 @@ export default class Presentation extends React.Component {
       >
         {/* Intro */}
         <FullScreenSlide bgImage={images.chernobyl}>
-          <Appear transitionDuration={3000}>
+          <Appear transitionDuration={1000}>
             <div>
               <img src={images.react} style={{ height: '60vh' }} />
-              <Heading caps style={{ ...styles.brain, fontSize: '20vh', lineHeight: 1.2 }}>React</Heading>
-              <Heading caps style={{ ...styles.brain, fontSize: '5.1vh' }}>your glowing friend</Heading>
+              <Heading caps style={{ ...styles.brain3D, fontSize: '21vh', lineHeight: 1.2 }}>React</Heading>
+              <Heading caps style={{ ...styles.brain, fontSize: '5.1vh' }}>Oleksiy <span style={styles.brain3DLight}>Лёша</span> Dubovyk</Heading>
             </div>
           </Appear>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.books}>
+          <Corner bottom="5vh" left="5vw">
+            <Heading textColor="secondary" style={{ fontSize: '4vh', marginBottom: '2vh' }}>React Up & Running — Book by Stoyan Stefanov</Heading>
+            <Heading textColor="secondary" style={{ fontSize: '4vh', marginBottom: '2vh' }}>The Road to Learn React — Book by Robin Wieruch</Heading>
+            <Heading textColor="secondary" style={{ fontSize: '4vh', marginBottom: '2vh' }}>React in Action — Book by Mark Tielens Thomas</Heading>
+            <Heading textColor="secondary" style={{ fontSize: '4vh', marginBottom: '2vh' }}>Learning React — Book by Alex Banks and Eve Porcello</Heading>
+            <Heading textColor="secondary" style={{ fontSize: '4vh', marginBottom: '2vh' }}>React Quickstart Step-By-Step Guide — Book by Lionel Lopez</Heading>
+            <Heading textColor="secondary" style={{ fontSize: '4vh', marginBottom: '2vh' }}>Building React Applications with Redux — Book by David Geary</Heading>
+            <Heading textColor="secondary" style={{ fontSize: '4vh', marginBottom: '2vh' }}>Learn React Hooks — Book by Daniel Bugl</Heading>
+            <Heading textColor="secondary" style={{ fontSize: '4vh', marginBottom: '2vh' }}>React Design Patterns and Best Practices — Book by Michele Bertoli</Heading>
+            <Heading textColor="secondary" style={{ fontSize: '4vh', marginBottom: '2vh' }}>React Quickly — Book by Azat Mardan</Heading>
+            <Heading textColor="secondary" style={{ fontSize: '4vh', marginBottom: '2vh' }}>React for Real — Book by Ludovico Fischer</Heading>
+            <Heading textColor="secondary" style={{ fontSize: '4vh', marginBottom: '2vh' }}>React by Example — Book by Prathamesh Sonpatki</Heading>
+            <Heading textColor="secondary" style={{ fontSize: '4vh', marginBottom: '2vh' }}>Pro MERN Stack — Book by Sophia Brooks</Heading>
+          </Corner>
+          <Corner top="5vh" right="5vw">
+            <Image src={images.orly} style={{ width: '30vh', height: '30vh', }} />
+          </Corner>
+        </FullScreenSlide>
+        <FullScreenSlide>
+          <FullScreenImage src={images.whatever} />
+          <Image src={images.devCommunity} style={{ position: 'absolute', width: '35vw', top: '40vh', marginLeft: '1vw', border: '1px solid black' }} />
         </FullScreenSlide>
 
         {/* Redux */}
@@ -263,6 +288,18 @@ export default class Presentation extends React.Component {
         </Slide>
 
         {/* Router */}
+        <FullScreenSlide bgImage={images.routes}>
+          {/* <Corner top="19.2vh" left="5.8vw"> */}
+          <Corner bottom="30vh" left="4vw">
+            <Heading caps style={{ ...styles.brain3D, fontSize: '14.63vh' }}>React Router</Heading>
+          </Corner>
+          {/* <Corner right="5.5vw" bottom="6vh">
+            <Heading caps textAlign="right" textColor="quaternary" style={{ fontSize: '7vh' }}>performed by</Heading>
+            <Heading caps textAlign="right" textColor="quaternary" style={{ fontSize: '7vh' }}>
+              Oleksiy <span style={styles.brain3DLight}>Лёша</span> Dubovyk
+            </Heading>
+          </Corner> */}
+        </FullScreenSlide>
         
 
         {/* Hooks */}
@@ -279,7 +316,6 @@ export default class Presentation extends React.Component {
             </div>
           </Appear>
         </FullScreenSlide>
-        <FullScreenVideo name="useYourBrain" />
         <Slide>
           <Image src={images.danHowOld} style={{ width: '55vw' }}/>
           <BlockQuote>
@@ -315,18 +351,18 @@ export default class Presentation extends React.Component {
         <Slide bgImage={images.hooksBlurred}>
           <Heading caps style={{ ...styles.brain }}>Problems</Heading>
           <List>
-            <Appear><ListItem textSize="8vh" bold>Reusing Logic</ListItem></Appear>
-            <Appear><ListItem textSize="8vh" bold>Giant Components</ListItem></Appear>
-            <Appear><ListItem textSize="8vh" bold>Confusing Classes</ListItem></Appear>
+            <Appear><ListItem textSize="7vh" bold>Reusing Logic</ListItem></Appear>
+            <Appear><ListItem textSize="7vh" bold>Giant Components</ListItem></Appear>
+            <Appear><ListItem textSize="7vh" bold>Confusing Classes</ListItem></Appear>
           </List>
         </Slide>
         <Slide bgImage={images.hooksBlurred}>
           <Heading size={2} style={{ ...styles.brain }}>Reusing Logic</Heading>
           <List>
-            <Appear><ListItem fit bold style={{ fontSize: '8vh' }}>Higher Order Components</ListItem></Appear>
-            <Appear><ListItem bold style={{ fontSize: '8vh' }}>Render Props</ListItem></Appear>
+            <Appear><ListItem fit bold style={{ fontSize: '7vh' }}>Higher Order Components</ListItem></Appear>
+            <Appear><ListItem bold style={{ fontSize: '7vh' }}>Render Props</ListItem></Appear>
             <Appear>
-              <Text textColor="secondary" bold textSize="6vh" margin="6vh 0 0 0">
+              <Text textColor="secondary" bold textSize="5vh" margin="6vh 0 0 0">
                 Both of these patterns have a downside:<br/>
                 they change the component hierarchy
               </Text>
