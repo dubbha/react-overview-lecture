@@ -73,10 +73,17 @@ const sourceFileNames = [
   'defaultSPARouteExpress.js',
   'defaultSPARouteDevServer.js',
   'route.js',
+  'routeInclusiveRouting.js',
+  'routeInclusiveRoutingUseCase.js',
+  'routerHelloWorld.js',
   'switch.js',
   'link.js',
   'navlink.js',
   'redirect.js',
+  'match.js',
+  'location.js',
+  'history.js',
+  'withRouter.js',
 
   'blockedUpdates.js',
   'connectedReactRouterState.js',
@@ -388,7 +395,7 @@ export default class Presentation extends React.Component {
             React Router
           </Heading>
           <Text textColor="secondary" style={{ fontSize: '6vh', marginTop: '5vh', textAlign: 'center' }}>
-          <span style={{ ...styles.brain }}>React Router</span> is an external library that manages navigation and rendering of components in React applications.
+            <span style={{ ...styles.brain }}>React Router</span> is an external library that manages navigation and rendering of components in React applications.
           </Text>
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
@@ -396,7 +403,7 @@ export default class Presentation extends React.Component {
             React Router <span style={{ ...styles.brain3D }}>V4+</span>
           </Heading>
           <Text textColor="secondary" style={{ fontSize: '6vh', marginTop: '5vh', textAlign: 'center' }}>
-          First thing to check when looking for a documentation, an article or a solution at StackOverflow, it that it is about React Router <span style={{ ...styles.brain, fontWeight: 'bold' }}>v4+</span>.
+            First thing to check when looking for a documentation, an article or a solution at StackOverflow, it that it is about React Router <span style={{ ...styles.brain, fontWeight: 'bold' }}>v4+</span>.
           </Text>
           <Text textColor="secondary" style={{ fontSize: '6vh', marginTop: '5vh', textAlign: 'center' }}>
             Virtually the entire API is <span style={{ ...styles.brain, fontWeight: 'bold' }}>Just Components<sup>TM</sup></span>.
@@ -501,6 +508,21 @@ export default class Presentation extends React.Component {
           <CodePane source={sources.route} lang="jsx" theme="light" />
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <CodePane source={sources.routerHelloWorld} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
+            Route
+          </Text>
+          <CodePane source={sources.routeInclusiveRouting} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
+            Route
+          </Text>
+          <CodePane source={sources.routeInclusiveRoutingUseCase} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
             Switch
           </Text>
@@ -534,14 +556,71 @@ export default class Presentation extends React.Component {
           </Text>
           <CodePane source={sources.redirect} lang="jsx" theme="light" />
         </FullScreenSlide>
-      
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Heading caps style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
+            Route render methods
+          </Heading>
+          <Text textColor="secondary" style={{ fontSize: '4.5vh', marginTop: '2vh', textAlign: 'left' }}>
+            There are 3 ways to render something with a &lt;Route&gt;:
+          </Text>
+          <List style={{ margin: '2vh 0 4vh' }}>
+            <ListItem style={{ fontSize: '4.5vh' }}>&lt;Route <span style={{ ...styles.brain }}>component</span>&gt;</ListItem>
+            <ListItem style={{ fontSize: '4.5vh' }}>&lt;Route <span style={{ ...styles.brain }}>render</span>&gt;</ListItem>
+            <ListItem style={{ fontSize: '4.5vh' }}>&lt;Route <span style={{ ...styles.brain }}>children</span>&gt;</ListItem>
+          </List>
+          <Heading caps style={{ fontSize: '4.5vh', margin: 0, textAlign: 'left' }}>
+            Route props
+          </Heading>
+          <Text textColor="secondary" style={{ fontSize: '4.5vh', marginTop: '2vh', textAlign: 'left' }}>
+            All the 3 render methods will be passed the same 3 route props:
+          </Text>
+          <List style={{ margin: '2vh 0' }}>
+            <ListItem style={{ fontSize: '4.5vh' }}>match</ListItem>
+            <ListItem style={{ fontSize: '4.5vh' }}>location</ListItem>
+            <ListItem style={{ fontSize: '4.5vh' }}>history</ListItem>
+          </List>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
+            Match
+          </Text>
+          <CodePane source={sources.match} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
+            Location
+          </Text>
+          <CodePane source={sources.location} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
+            History
+          </Text>
+          <CodePane source={sources.history} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Heading style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
+            withRouter()
+          </Heading>
+          <Text textColor="secondary" style={{ fontSize: '4vh', marginTop: '2vh', textAlign: 'left' }}>
+            The match, location and history props are only available to the component immediately rendered by Route (a.k.a <span style={{ ...styles.brain, fontWeight: 'bold' }}>"route component"</span>).<br/>
+            In case you need to access them in a deeper level component you may either forward them down in props, or use withRouter.<br/>
+            The <span style={{ ...styles.brain, fontWeight: 'bold' }}>withRouter HOC</span> will pass the closest Route's match, location, and history props to the wrapped component whenever it renders.
+          </Text>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
+            withRouter
+          </Text>
+          <CodePane source={sources.withRouter} lang="jsx" theme="light" />
+        </FullScreenSlide>
 
         <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw 1vh 0.5vw">
           <Heading caps style={{ ...styles.brain, lineHeight: '10vh', fontSize: '8vh', margin: 0 }}>Redux Integration</Heading>
           <Text textColor="secondary" textSize="4.5vh" textAlign="left">
-          <span style={{ ...styles.brain }}>Blocked Updates</span> issue happens when a <span style={{ ...styles.brain }}>connected</span> component is not a <span style={{ ...styles.brain }}>route</span> component.
-          Redux implements shouldComponentUpdate and there are no props from the Router.
-          The fix is withRouter:
+            <span style={{ ...styles.brain }}>Blocked Updates</span> issue happens when a <span style={{ ...styles.brain }}>connected</span> component is not a <span style={{ ...styles.brain }}>route</span> component.
+            Redux implements shouldComponentUpdate and there are no props from the Router.
+            The fix is withRouter:
           </Text>
           <CodePane source={sources.blockedUpdates} style={{ maxHeight: '75vh', overflowY: 'auto' }} lang="jsx" theme="light" />
           <Text textColor="secondary" style={{ fontSize: '4.5vh', marginTop: '2vh', textAlign: 'left' }}>
