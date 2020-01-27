@@ -27,11 +27,29 @@ import {
 import createTheme from '../assets/theme';
 
 const imageFileNames = [
+  // react
   'chernobyl.jpg',
   'react.svg',
-  'routes.webp',
   'books.png',
   'orly.png',
+  'componentBasics1.webp',
+  'componentBasics2.webp',
+  'componentBasics3.webp',
+  'componentBasics4.webp',
+  // redux
+  'collider.webp',
+  'colliderBlurred.webp',
+  // router
+  'routes.webp',
+  'routesBlurred.webp',
+  'routerBasics1.webp',
+  'routerBasics2.webp',
+  'routerBasics3.webp',
+  'hashRouter.png',
+  'hashRouterOnStatic.gif',
+  'browserRouter.png',
+  'browserRouterOnStatic.gif',
+  // hooks
   'useYourBrain.webp',
   'marvel.jpg',
   'karloff.webp',
@@ -47,6 +65,24 @@ const reqImage = name => ({ [name.split('.')[0]]: require(`../assets/${name}`) }
 const images = imageFileNames.reduce((acc, name) => ({ ...acc, ...reqImage(name) }), {});
 
 const sourceFileNames = [
+  // router
+  'routerInstall.js',
+  'routerInstallCRA.js',
+  'importBrowserRouter.js',
+  'importHashRouter.js',
+  'defaultSPARouteExpress.js',
+  'defaultSPARouteDevServer.js',
+  'route.js',
+  'switch.js',
+  'link.js',
+  'navlink.js',
+  'redirect.js',
+
+  'blockedUpdates.js',
+  'connectedReactRouterState.js',
+  'connectedReactRouterAction.js',
+  'connectedReactRouter.js',
+  // hooks
   'hoc.js',
   'hocWithRouter.js',
   'renderProps.js',
@@ -269,8 +305,30 @@ export default class Presentation extends React.Component {
           <FullScreenImage src={images.whatever} />
           <Image src={images.devCommunity} style={{ position: 'absolute', width: '35vw', top: '40vh', marginLeft: '1vw', border: '1px solid black' }} />
         </FullScreenSlide>
+        <FullScreenSlide bgColor="secondary">
+          <FullScreenImage src={images.componentBasics1} />
+        </FullScreenSlide>
+        <FullScreenSlide bgColor="secondary">
+          <FullScreenImage src={images.componentBasics2} />
+        </FullScreenSlide>
+        <FullScreenSlide bgColor="secondary">
+          <FullScreenImage src={images.componentBasics3} />
+        </FullScreenSlide>
+        <FullScreenSlide bgColor="secondary">
+          <FullScreenImage src={images.componentBasics4} />
+        </FullScreenSlide>
 
         {/* Redux */}
+        <FullScreenSlide bgImage={images.collider}>
+          <Corner bottom="33vh" right="18.9vw">
+            <Heading caps style={{ ...styles.brain3D, fontSize: '14.63vh' }}>Redux</Heading>
+          </Corner>
+        </FullScreenSlide>
+        <Slide bgImage={images.colliderBlurred}>
+          <Heading caps style={{ ...styles.brain }}>Motivation</Heading>
+          <Appear><Heading size={4} textColor="secondary">Why React Hooks?</Heading></Appear>
+          <Appear><Heading fit textColor="secondary">What problems are we trying to solve?</Heading></Appear>
+        </Slide>
         <Slide>
           <BlockQuote>
             <Quote textColor="secondary" style={{ marginBottom: '3vh', fontSize: '3.8vh', lineHeight: 1.2, borderColor: theme.screen.colors.secondary }}>
@@ -289,17 +347,258 @@ export default class Presentation extends React.Component {
 
         {/* Router */}
         <FullScreenSlide bgImage={images.routes}>
-          {/* <Corner top="19.2vh" left="5.8vw"> */}
-          <Corner bottom="30vh" left="4vw">
+          <Corner bottom="27vh" left="4vw">
             <Heading caps style={{ ...styles.brain3D, fontSize: '14.63vh' }}>React Router</Heading>
           </Corner>
-          {/* <Corner right="5.5vw" bottom="6vh">
-            <Heading caps textAlign="right" textColor="quaternary" style={{ fontSize: '7vh' }}>performed by</Heading>
-            <Heading caps textAlign="right" textColor="quaternary" style={{ fontSize: '7vh' }}>
-              Oleksiy <span style={styles.brain3DLight}>Лёша</span> Dubovyk
-            </Heading>
-          </Corner> */}
         </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Heading caps style={{ fontSize: '10vh', margin: 0 }}>Concept of a Router</Heading>
+          <Appear>
+            <Text textColor="secondary" style={{ fontSize: '6vh', marginTop: '5vh', textAlign: 'justify' }}>
+              In Web Development:<br/> <span style={{ ...styles.brain }}>Routing</span> is a process of matching of a <span style={{ ...styles.brain }}>URL</span> to a <span style={{ ...styles.brain }}>View</span>.
+            </Text>
+          </Appear>
+          <Appear>
+            <Text textColor="secondary" style={{ fontSize: '6vh', marginTop: '5vh', textAlign: 'justify' }}>
+              In Single Page Applications:<br/> <span style={{ ...styles.brain }}>View</span> is a set of components being rendered.<br/><span style={{ ...styles.brain }}>Router</span> dynamically loads components and changes what's displayed in the Browser as user navigates the page changing the <span style={{ ...styles.brain }}>URL</span>.
+            </Text>
+          </Appear>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 10vh">
+          <Heading caps style={{ fontSize: '8vh', margin: 0 }}>
+            Using Router allows to
+          </Heading>
+          <List>
+            <ListItem style={{ fontSize: '6vh' }}>Keep UI in sync with the URL</ListItem>
+            <ListItem style={{ fontSize: '6vh' }}>Bookmark individual SPA pages</ListItem>
+            <ListItem style={{ fontSize: '6vh' }}>Use Browser history, Back/Forward buttons</ListItem>
+          </List>
+        </FullScreenSlide>
+        <FullScreenSlide bgColor="secondary">
+          <FullScreenImage src={images.routerBasics1} />
+        </FullScreenSlide>
+        <FullScreenSlide bgColor="secondary">
+          <FullScreenImage src={images.routerBasics2} />
+        </FullScreenSlide>
+        <FullScreenSlide bgColor="secondary">
+          <FullScreenImage src={images.routerBasics3} />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Heading caps style={{ fontSize: '10vh', margin: 0 }}>
+            React Router
+          </Heading>
+          <Text textColor="secondary" style={{ fontSize: '6vh', marginTop: '5vh', textAlign: 'center' }}>
+          <span style={{ ...styles.brain }}>React Router</span> is an external library that manages navigation and rendering of components in React applications.
+          </Text>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Heading caps style={{ fontSize: '10vh', margin: 0 }}>
+            React Router <span style={{ ...styles.brain3D }}>V4+</span>
+          </Heading>
+          <Text textColor="secondary" style={{ fontSize: '6vh', marginTop: '5vh', textAlign: 'center' }}>
+          First thing to check when looking for a documentation, an article or a solution at StackOverflow, it that it is about React Router <span style={{ ...styles.brain, fontWeight: 'bold' }}>v4+</span>.
+          </Text>
+          <Text textColor="secondary" style={{ fontSize: '6vh', marginTop: '5vh', textAlign: 'center' }}>
+            Virtually the entire API is <span style={{ ...styles.brain, fontWeight: 'bold' }}>Just Components<sup>TM</sup></span>.
+          </Text>
+          <Corner right="0.5vw" bottom="1vh"><Link href="https://reacttraining.com/react-router/core/guides/philosophy" target="_blank" style={{ fontSize: '4vh' }}>https://reacttraining.com/react-router/core/guides/philosophy</Link></Corner>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Heading style={{ fontSize: '8vh', margin: 0 }}>
+            React Router Packages
+          </Heading>
+          <List>
+            <ListItem style={{ fontSize: '5vh' }}>Web – <span style={{ ...styles.brain, fontWeight: 'bold' }}>react-router-dom</span> package, used for Web Browser</ListItem>
+            <ListItem style={{ fontSize: '5vh' }}>Native – <span style={{ ...styles.brain, fontWeight: 'bold' }}>react-router-native</span> package, used for React Native</ListItem>
+            <ListItem style={{ fontSize: '5vh' }}>Core – <span style={{ ...styles.brain, fontWeight: 'bold' }}>react-router</span> package, normally not used directly</ListItem>
+          </List>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '5vh', textAlign: 'left' }}>
+          React Router is not included in React by default, so you need to install it on top of React itself:
+          </Text>
+          <CodePane source={sources.routerInstall} style={{ maxHeight: '75vh', overflowY: 'auto' }} theme="light" />
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '5vh', textAlign: 'left' }}>
+          It's not even included in Create React App by default:
+          </Text>
+          <CodePane source={sources.routerInstallCRA} style={{ maxHeight: '75vh', overflowY: 'auto' }} theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 10vh">
+          <Heading caps style={{ fontSize: '8vh', margin: 0 }}>
+            Basic Components
+          </Heading>
+          <List>
+            <ListItem style={{ fontSize: '6vh' }}><span style={{ ...styles.brain, fontWeight: 'bold' }}>Router</span> components</ListItem>
+            <ListItem style={{ fontSize: '6vh' }}><span style={{ ...styles.brain, fontWeight: 'bold' }}>Route matching</span> components</ListItem>
+            <ListItem style={{ fontSize: '6vh' }}><span style={{ ...styles.brain, fontWeight: 'bold' }}>Navigation</span> components</ListItem>
+          </List>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Heading style={{ fontSize: '8vh', margin: 0 }}>
+            Router Components
+          </Heading>
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '5vh 0 2vh 0', textAlign: 'left' }}>
+            Browser related router types:
+          </Text>
+          <List style={{ margin: 0 }}>
+            <ListItem style={{ fontSize: '4vh' }}>BrowserRouter – for modern browsers that support HTML5 History API</ListItem>
+            <ListItem style={{ fontSize: '4vh' }}>HashRouter – for legacy browsers (uses window.location.hash)</ListItem>
+          </List>
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '5vh 0 2vh 0', textAlign: 'left' }}>
+            Router types not related to browsers:
+          </Text>
+          <List style={{ margin: 0 }}>
+            <ListItem style={{ fontSize: '4vh' }}>MemoryRouter – for Testing or non-DOM envs like React-Native</ListItem>
+            <ListItem style={{ fontSize: '4vh' }}>StaticRouter – for Server-Side Rendering</ListItem>
+          </List>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '5vh 0 2vh 0', textAlign: 'left' }}>
+            BrowserRouter
+          </Text>
+          <Image src={images.browserRouter} margin="0 auto 2vh 0" />
+          <CodePane source={sources.importBrowserRouter} lang="jsx" theme="light" />
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '5vh 0 2vh 0', textAlign: 'left' }}>
+            HashRouter
+          </Text>
+          <Image src={images.hashRouter} margin="0 auto 2vh 0" />
+          <CodePane source={sources.importHashRouter} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '5vh 0 2vh 0', textAlign: 'left' }}>
+            BrowserRouter requires a default SPA route to be configured on Server. Otherwise here's what's happening:
+          </Text>
+          <Image src={images.browserRouterOnStatic} style={{ width: '100%' }} margin="0 auto 2vh 0" />
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '5vh 0 2vh 0', textAlign: 'left' }}>
+            HashRouter is the fallback in case there is no control of Server side or static HTML. Like GitHub Pages. Or this presentation.
+          </Text>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '5vh 0 2vh 0', textAlign: 'left' }}>
+            Default SPA route on Express server
+          </Text>
+          <CodePane source={sources.defaultSPARouteExpress} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '5vh 0 2vh 0', textAlign: 'left' }}>
+            Default SPA route on Webpack Dev Server
+          </Text>
+          <CodePane source={sources.defaultSPARouteDevServer} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 12vh">
+          <Heading style={{ fontSize: '8vh', margin: 0 }}>
+            Route Matching Components
+          </Heading>
+          <List>
+            <ListItem style={{ fontSize: '6vh' }}>Route</ListItem>
+            <ListItem style={{ fontSize: '6vh' }}>Switch</ListItem>
+          </List>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
+            Route
+          </Text>
+          <CodePane source={sources.route} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
+            Switch
+          </Text>
+          <CodePane source={sources.switch} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 12vh">
+          <Heading style={{ fontSize: '8vh', margin: 0 }}>
+            Navigation Components
+          </Heading>
+          <List>
+            <ListItem style={{ fontSize: '6vh' }}>Link</ListItem>
+            <ListItem style={{ fontSize: '6vh' }}>Navlink</ListItem>
+            <ListItem style={{ fontSize: '6vh' }}>Redirect</ListItem>
+          </List>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
+            Link
+          </Text>
+          <CodePane source={sources.link} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
+            NavLink
+          </Text>
+          <CodePane source={sources.navlink} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
+            Redirect
+          </Text>
+          <CodePane source={sources.redirect} lang="jsx" theme="light" />
+        </FullScreenSlide>
+      
+
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw 1vh 0.5vw">
+          <Heading caps style={{ ...styles.brain, lineHeight: '10vh', fontSize: '8vh', margin: 0 }}>Redux Integration</Heading>
+          <Text textColor="secondary" textSize="4.5vh" textAlign="left">
+          <span style={{ ...styles.brain }}>Blocked Updates</span> issue happens when a <span style={{ ...styles.brain }}>connected</span> component is not a <span style={{ ...styles.brain }}>route</span> component.
+          Redux implements shouldComponentUpdate and there are no props from the Router.
+          The fix is withRouter:
+          </Text>
+          <CodePane source={sources.blockedUpdates} style={{ maxHeight: '75vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+          <Text textColor="secondary" style={{ fontSize: '4.5vh', marginTop: '2vh', textAlign: 'left' }}>
+            <span style={{ ...styles.brain }}>Deep Integration</span> is required to:
+            <ul style={{ margin: 0 }}>
+              <li>Synchronize routing data with the store, access from the store</li>
+              <li>Be able to navigate by dispatching actions</li>
+              <li>Have support for time travel debugging for route changes</li>
+            </ul>
+          </Text>
+          <Text textColor="secondary" style={{ fontSize: '4.5vh', marginTop: '2vh', textAlign: 'left' }}>
+            React Router team does not recomment Deep Integration:
+            <ul style={{ margin: 0 }}>
+              <li>Routing data is already a prop of route components</li>
+              <li>For async navigation you can pass history object in action payload</li>
+              <li>Route changes are unlikely to matter for time travel debugging</li>
+            </ul>
+          </Text>
+          <Corner right="0.5vw" bottom="0.5vh"><Link href="https://reacttraining.com/react-router/web/guides/redux-integration" target="_blank" style={{ fontSize: '4vh' }}>Redux Integration</Link></Corner>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw 1vh 0.5vw">
+          <Heading style={{ ...styles.brain, lineHeight: '10vh', fontSize: '8vh', margin: 0 }}>Connected React Router</Heading>
+          <Text textColor="secondary" textSize="4.5vh" textAlign="left">
+            Synchronizes Router state with Redux store through uni-directional flow:
+          </Text>
+          <Text textColor="secondary" textSize="4.5vh" textAlign="left">
+            history → store → router → components
+          </Text>
+          <div style={{ minWidth: '48.75vw', maxWidth: '48.75vw', margin: '0 0.25vw 0 0', display: 'inline-block', verticalAlign: 'top' }}>
+            <CodePane
+              lang="jsx"
+              source={sources.connectedReactRouterState}
+              theme="light"
+              style={{ maxHeight: '75vh', overflowY: 'auto' }}
+            />
+          </div>
+          <div style={{ minWidth: '48.75vw', maxWidth: '48.75vw', margin: '0 0 0 0.25vw', display: 'inline-block', verticalAlign: 'top' }}>
+            <CodePane
+              lang="jsx"
+              source={sources.connectedReactRouterAction}
+              theme="light"
+              style={{ maxHeight: '75vh', overflowY: 'auto' }}
+            />
+          </div>
+          <Corner right="0.5vw" bottom="0.5vh"><Link href="https://github.com/supasate/connected-react-router" target="_blank" style={{ fontSize: '4vh' }}>connected-react-router</Link></Corner>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw 1vh 0.5vw">
+          <Heading style={{ ...styles.brain, lineHeight: '6vh', fontSize: '5vh', margin: 0 }}>Connected React Router</Heading>
+          <CodePane
+            lang="jsx"
+            source={sources.connectedReactRouter}
+            theme="light"
+            style={{ maxHeight: '93vh', overflowY: 'auto' }}
+          />
+          <Corner right="2vw" bottom="0"><Link href="https://codesandbox.io/s/connected-react-router-yllkz" target="_blank" style={{ fontSize: '4vh' }}>Example</Link></Corner>
+        </FullScreenSlide>
+        
         
 
         {/* Hooks */}

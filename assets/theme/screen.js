@@ -176,7 +176,7 @@ const screen = (colorArgs = defaultColors, fontArgs = defaultFonts) => {
       bar: {
         container: {
           position: 'absolute',
-          height: '3px',
+          height: '0.5vh',
           width: '100%',
           bottom: 0,
           left: 0,
@@ -232,7 +232,11 @@ const screen = (colorArgs = defaultColors, fontArgs = defaultFonts) => {
         fontSize: '2rem', // 0.8rem
         fontWeight: 'normal',
         minWidth: '100%',
-        maxWidth: '100%' // maxWidth: 800
+        maxWidth: '100%', // maxWidth: 800
+        '& ::selection': {
+          backgroundColor: colors.brainDark,
+          color: colors.secondary,
+        },
       },
       syntax: {
         fontFamily: fonts.tertiary,
