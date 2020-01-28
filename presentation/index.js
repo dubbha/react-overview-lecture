@@ -39,6 +39,12 @@ const imageFileNames = [
   // redux
   'collider.webp',
   'colliderBlurred.webp',
+  'fbCounterIssue.png',
+  'fbCounterIssueTeam.png',
+  'mvc.png',
+  'flux.png',
+  'redux.png',
+
   // router
   'routes.webp',
   'routesBlurred.webp',
@@ -65,6 +71,13 @@ const reqImage = name => ({ [name.split('.')[0]]: require(`../assets/${name}`) }
 const images = imageFileNames.reduce((acc, name) => ({ ...acc, ...reqImage(name) }), {});
 
 const sourceFileNames = [
+  // redux
+  'reduxPrinciples1.js',
+  'reduxPrinciples2.js',
+  'reduxPrinciples3.js',
+  'reduxPrinciples31.js',
+  'combineReducers.js',
+
   // router
   'routerInstall.js',
   'routerInstallCRA.js',
@@ -84,11 +97,13 @@ const sourceFileNames = [
   'location.js',
   'history.js',
   'withRouter.js',
-
+  'routeRenderProtectedRoute.js',
+  'customMatchParams.js',
   'blockedUpdates.js',
   'connectedReactRouterState.js',
   'connectedReactRouterAction.js',
   'connectedReactRouter.js',
+
   // hooks
   'hoc.js',
   'hocWithRouter.js',
@@ -144,7 +159,8 @@ const theme = createTheme(
     bronze: '#cd7f32',
     asphalt: '#222f38',
     fire: '#c2261f',
-    gray: '#1F2022'
+    gray: '#1F2022',
+    cartoon: '#006dc6',
   },
   {
     primary: 'Montserrat',
@@ -331,8 +347,95 @@ export default class Presentation extends React.Component {
             <Heading caps style={{ ...styles.brain3D, fontSize: '14.63vh' }}>Redux</Heading>
           </Corner>
         </FullScreenSlide>
+        <Slide bgColor="secondary">
+          <Image src={images.fbCounterIssue} />
+        </Slide>
+        <Slide bgColor="secondary">
+          <Image src={images.fbCounterIssueTeam} />
+        </Slide>
+        <Slide bgColor="secondary">
+          <Text caps textColor="cartoon" style={{ fontSize: '7vh', fontWeight: 'bold', margin: '5vh 0 2vh 0', textAlign: 'center' }}>
+            MVC doesn't scale well
+          </Text>
+          <Image src={images.mvc} />
+          {/*
+            Connections between Models and Views are bidirectional causing the following:
+              - it’s hard to track down cyclic dependencies
+              - cascading data updates are hard to follow
+              - code is imperative, data flows are hard to reason about
+              - system is fragile, adding new features is dangerous
+              - bugs are hard to track down
+          */}
+        </Slide>
+        <Slide bgColor="secondary">
+          <Text caps textColor="cartoon" style={{ fontSize: '7vh', fontWeight: 'bold', margin: '5vh 0 2vh 0', textAlign: 'left' }}>
+            Flux
+          </Text>
+          <Image src={images.flux} />
+        </Slide>
+        <Slide bgColor="secondary">
+          <Text caps textColor="cartoon" style={{ fontSize: '7vh', fontWeight: 'bold', margin: '5vh 0 2vh 0', textAlign: 'left' }}>
+            Redux
+          </Text>
+          <Image src={images.redux} />
+          {/* Flux:							                              Redux:
+              - Singleton Dispatcher		                      - No Dispatcher, store.dispatch() method
+              - Multiple Stores					                      - Single Store
+              - Mutable State					                        - Immutable State
+              - Store callbacks registered with Dispatcher		- Reducers, pure functions
+              - Store getter methods				                  - Selectors */}
+        </Slide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 7vw">
+          <Heading style={{ fontSize: '8vh', margin: 0 }}>
+            Three Principles of Redux
+          </Heading>
+          <List>
+            <ListItem style={{ fontSize: '6vh' }}>Single source of truth</ListItem>
+            <ListItem style={{ fontSize: '6vh' }}>State is read-only</ListItem>
+            <ListItem style={{ fontSize: '6vh' }}>Changes are made with pure functions</ListItem>
+          </List>
+        </FullScreenSlide>
+
+        
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <Heading caps style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
+            Single source of truth
+          </Heading>
+          <Text textColor="secondary" style={{ fontSize: '3.8vh', marginTop: '2vh', textAlign: 'left' }}>
+            The state of your whole application is stored in an object tree within a single store
+          </Text>
+          <CodePane source={sources.reduxPrinciples1} style={{ maxHeight: '75vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <Heading caps style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
+            State is read-only
+          </Heading>
+          <Text textColor="secondary" style={{ fontSize: '3.8vh', marginTop: '2vh', textAlign: 'left' }}>
+            The only way to change the state is to emit an action, an object describing what happened
+          </Text>
+          <CodePane source={sources.reduxPrinciples2} style={{ maxHeight: '75vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <Heading caps style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
+            Changes are made with pure functions
+          </Heading>
+          <Text textColor="secondary" style={{ fontSize: '3.8vh', marginTop: '2vh', textAlign: 'left' }}>
+            To specify how the state tree is transformed by actions, you write pure reducers
+          </Text>
+          <CodePane source={sources.reduxPrinciples3} style={{ maxHeight: '75vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <Heading caps style={{ fontSize: '5vh', margin: '0 0 2vh', textAlign: 'left' }}>
+            Changes are made with pure functions
+          </Heading>
+          <CodePane source={sources.reduxPrinciples31} style={{ maxHeight: '90vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <CodePane source={sources.combineReducers} style={{ maxHeight: '99vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        
         <Slide bgImage={images.colliderBlurred}>
-          <Heading caps style={{ ...styles.brain }}>Motivation</Heading>
+          <Heading caps style={{ ...styles.brain }}>Problem</Heading>
           <Appear><Heading size={4} textColor="secondary">Why React Hooks?</Heading></Appear>
           <Appear><Heading fit textColor="secondary">What problems are we trying to solve?</Heading></Appear>
         </Slide>
@@ -403,10 +506,10 @@ export default class Presentation extends React.Component {
             React Router <span style={{ ...styles.brain3D }}>V4+</span>
           </Heading>
           <Text textColor="secondary" style={{ fontSize: '6vh', marginTop: '5vh', textAlign: 'center' }}>
-            First thing to check when looking for a documentation, an article or a solution at StackOverflow, it that it is about React Router <span style={{ ...styles.brain, fontWeight: 'bold' }}>v4+</span>.
+            First thing to check when looking for a documentation, an article or a solution at StackOverflow, it that it is about React Router <span style={{ ...styles.brain }}>v4+</span>.
           </Text>
           <Text textColor="secondary" style={{ fontSize: '6vh', marginTop: '5vh', textAlign: 'center' }}>
-            Virtually the entire API is <span style={{ ...styles.brain, fontWeight: 'bold' }}>Just Components<sup>TM</sup></span>.
+            Virtually the entire API is <span style={{ ...styles.brain }}>Just Components<sup>TM</sup></span>.
           </Text>
           <Corner right="0.5vw" bottom="1vh"><Link href="https://reacttraining.com/react-router/core/guides/philosophy" target="_blank" style={{ fontSize: '4vh' }}>https://reacttraining.com/react-router/core/guides/philosophy</Link></Corner>
         </FullScreenSlide>
@@ -415,9 +518,9 @@ export default class Presentation extends React.Component {
             React Router Packages
           </Heading>
           <List>
-            <ListItem style={{ fontSize: '5vh' }}>Web – <span style={{ ...styles.brain, fontWeight: 'bold' }}>react-router-dom</span> package, used for Web Browser</ListItem>
-            <ListItem style={{ fontSize: '5vh' }}>Native – <span style={{ ...styles.brain, fontWeight: 'bold' }}>react-router-native</span> package, used for React Native</ListItem>
-            <ListItem style={{ fontSize: '5vh' }}>Core – <span style={{ ...styles.brain, fontWeight: 'bold' }}>react-router</span> package, normally not used directly</ListItem>
+            <ListItem style={{ fontSize: '5vh' }}><span style={{ ...styles.brain }}>react-router-dom</span> package, used for Web Browser</ListItem>
+            <ListItem style={{ fontSize: '5vh' }}><span style={{ ...styles.brain }}>react-router-native</span> package, used for React Native</ListItem>
+            <ListItem style={{ fontSize: '5vh' }}><span style={{ ...styles.brain }}>react-router</span> package, dependency of the other two</ListItem>
           </List>
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
@@ -435,9 +538,9 @@ export default class Presentation extends React.Component {
             Basic Components
           </Heading>
           <List>
-            <ListItem style={{ fontSize: '6vh' }}><span style={{ ...styles.brain, fontWeight: 'bold' }}>Router</span> components</ListItem>
-            <ListItem style={{ fontSize: '6vh' }}><span style={{ ...styles.brain, fontWeight: 'bold' }}>Route matching</span> components</ListItem>
-            <ListItem style={{ fontSize: '6vh' }}><span style={{ ...styles.brain, fontWeight: 'bold' }}>Navigation</span> components</ListItem>
+            <ListItem style={{ fontSize: '6vh' }}><span style={{ ...styles.brain }}>Router</span> components</ListItem>
+            <ListItem style={{ fontSize: '6vh' }}><span style={{ ...styles.brain }}>Route matching</span> components</ListItem>
+            <ListItem style={{ fontSize: '6vh' }}><span style={{ ...styles.brain }}>Navigation</span> components</ListItem>
           </List>
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
@@ -480,19 +583,19 @@ export default class Presentation extends React.Component {
             HashRouter is the fallback in case there is no control of Server side or static HTML. Like GitHub Pages. Or this presentation.
           </Text>
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '5vh 0 2vh 0', textAlign: 'left' }}>
             Default SPA route on Express server
           </Text>
           <CodePane source={sources.defaultSPARouteExpress} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '5vh 0 2vh 0', textAlign: 'left' }}>
             Default SPA route on Webpack Dev Server
           </Text>
           <CodePane source={sources.defaultSPARouteDevServer} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 12vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 7vw">
           <Heading style={{ fontSize: '8vh', margin: 0 }}>
             Route Matching Components
           </Heading>
@@ -501,34 +604,34 @@ export default class Presentation extends React.Component {
             <ListItem style={{ fontSize: '6vh' }}>Switch</ListItem>
           </List>
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
             Route
           </Text>
           <CodePane source={sources.route} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
           <CodePane source={sources.routerHelloWorld} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
             Route
           </Text>
           <CodePane source={sources.routeInclusiveRouting} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
             Route
           </Text>
           <CodePane source={sources.routeInclusiveRoutingUseCase} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
             Switch
           </Text>
           <CodePane source={sources.switch} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 12vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 10vw">
           <Heading style={{ fontSize: '8vh', margin: 0 }}>
             Navigation Components
           </Heading>
@@ -538,81 +641,91 @@ export default class Presentation extends React.Component {
             <ListItem style={{ fontSize: '6vh' }}>Redirect</ListItem>
           </List>
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
             Link
           </Text>
           <CodePane source={sources.link} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
             NavLink
           </Text>
           <CodePane source={sources.navlink} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
             Redirect
           </Text>
           <CodePane source={sources.redirect} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 2vw">
           <Heading caps style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
             Route render methods
           </Heading>
-          <Text textColor="secondary" style={{ fontSize: '4.5vh', marginTop: '2vh', textAlign: 'left' }}>
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '2vh', textAlign: 'left' }}>
             There are 3 ways to render something with a &lt;Route&gt;:
           </Text>
           <List style={{ margin: '2vh 0 4vh' }}>
-            <ListItem style={{ fontSize: '4.5vh' }}>&lt;Route <span style={{ ...styles.brain }}>component</span>&gt;</ListItem>
-            <ListItem style={{ fontSize: '4.5vh' }}>&lt;Route <span style={{ ...styles.brain }}>render</span>&gt;</ListItem>
-            <ListItem style={{ fontSize: '4.5vh' }}>&lt;Route <span style={{ ...styles.brain }}>children</span>&gt;</ListItem>
+            <ListItem style={{ fontSize: '5vh' }}>&lt;Route <span style={{ ...styles.brain }}>component</span>&gt;</ListItem>
+            <ListItem style={{ fontSize: '5vh' }}>&lt;Route <span style={{ ...styles.brain }}>render</span>&gt;</ListItem>
+            <ListItem style={{ fontSize: '5vh' }}>&lt;Route <span style={{ ...styles.brain }}>children</span>&gt;</ListItem>
           </List>
-          <Heading caps style={{ fontSize: '4.5vh', margin: 0, textAlign: 'left' }}>
+          <Heading caps style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
             Route props
           </Heading>
-          <Text textColor="secondary" style={{ fontSize: '4.5vh', marginTop: '2vh', textAlign: 'left' }}>
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '2vh', textAlign: 'left' }}>
             All the 3 render methods will be passed the same 3 route props:
           </Text>
           <List style={{ margin: '2vh 0' }}>
-            <ListItem style={{ fontSize: '4.5vh' }}>match</ListItem>
-            <ListItem style={{ fontSize: '4.5vh' }}>location</ListItem>
-            <ListItem style={{ fontSize: '4.5vh' }}>history</ListItem>
+            <ListItem style={{ fontSize: '5vh' }}>match</ListItem>
+            <ListItem style={{ fontSize: '5vh' }}>location</ListItem>
+            <ListItem style={{ fontSize: '5vh' }}>history</ListItem>
           </List>
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
             Match
           </Text>
           <CodePane source={sources.match} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
             Location
           </Text>
           <CodePane source={sources.location} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
             History
           </Text>
           <CodePane source={sources.history} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 2vw">
           <Heading style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
-            withRouter()
+            withRouter() HOC
           </Heading>
-          <Text textColor="secondary" style={{ fontSize: '4vh', marginTop: '2vh', textAlign: 'left' }}>
-            The match, location and history props are only available to the component immediately rendered by Route (a.k.a <span style={{ ...styles.brain, fontWeight: 'bold' }}>"route component"</span>).<br/>
+          <Text textColor="secondary" style={{ fontSize: '4.5vh', marginTop: '2vh', textAlign: 'left' }}>
+            The match, location and history props are only available to the component immediately rendered by Route (a.k.a "<span style={{ ...styles.brain }}>route component</span>").<br/>
             In case you need to access them in a deeper level component you may either forward them down in props, or use withRouter.<br/>
-            The <span style={{ ...styles.brain, fontWeight: 'bold' }}>withRouter HOC</span> will pass the closest Route's match, location, and history props to the wrapped component whenever it renders.
+            The <span style={{ ...styles.brain }}>withRouter HOC</span> will pass the closest Route's match, location, and history props to the wrapped component whenever it renders.
           </Text>
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vh">
-          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
-            withRouter
-          </Text>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw 1vh 0.5vw">
           <CodePane source={sources.withRouter} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw 1vh 0.5vw">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
+            Protected Route using &lt;Route render&gt;
+          </Text>
+          <CodePane source={sources.routeRenderProtectedRoute} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw 1vh 0.5vw">
+          <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
+            Custom match parameters
+          </Text>
+          <CodePane source={sources.customMatchParams} lang="jsx" theme="light" />
+          <Corner right="0.5vw" bottom="0.5vh"><Link href="https://pshrmn.github.io/route-tester/" target="_blank" style={{ fontSize: '4vh' }}>https://pshrmn.github.io/route-tester</Link></Corner>
         </FullScreenSlide>
 
         <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw 1vh 0.5vw">
@@ -667,15 +780,15 @@ export default class Presentation extends React.Component {
           </div>
           <Corner right="0.5vw" bottom="0.5vh"><Link href="https://github.com/supasate/connected-react-router" target="_blank" style={{ fontSize: '4vh' }}>connected-react-router</Link></Corner>
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw 1vh 0.5vw">
-          <Heading style={{ ...styles.brain, lineHeight: '6vh', fontSize: '5vh', margin: 0 }}>Connected React Router</Heading>
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
+          {/* <Heading style={{ ...styles.brain, lineHeight: '6vh', fontSize: '5vh', margin: 0 }}>Connected React Router</Heading> */}
           <CodePane
             lang="jsx"
             source={sources.connectedReactRouter}
             theme="light"
-            style={{ maxHeight: '93vh', overflowY: 'auto' }}
+            style={{ maxHeight: '96vh', overflowY: 'auto' }}
           />
-          <Corner right="2vw" bottom="0"><Link href="https://codesandbox.io/s/connected-react-router-yllkz" target="_blank" style={{ fontSize: '4vh' }}>Example</Link></Corner>
+          <Corner right="2vw" bottom="2vh"><Link href="https://codesandbox.io/s/connected-react-router-yllkz" target="_blank" style={{ fontSize: '4vh' }}>Example</Link></Corner>
         </FullScreenSlide>
         
         
@@ -850,7 +963,7 @@ export default class Presentation extends React.Component {
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">Returns a stateful value, and a function to update it.</Text>
           <Appear><Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">During the initial render, the returned state (<span style={{ ...styles.brain }}>state</span>) is the same as the value passed as the first argument (<span style={{ ...styles.brain }}>initialState</span>).</Text></Appear>
           <Appear><Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">The <span style={{ ...styles.brain }}>setState</span> function is used to update the state. It accepts a new state value and enqueues a re-render of the component.</Text></Appear>
-          <Appear><div><Corner right="0.5vw" bottom="0.5vh"><Examples names={['useState', 'useStateTwoStates', 'useStateManyStates']} /></Corner></div></Appear>
+          {/* <Appear><div><Corner right="0.5vw" bottom="0.5vh"><Examples names={['useState', 'useStateTwoStates', 'useStateManyStates']} /></Corner></div></Appear> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useState</Heading>
@@ -866,7 +979,7 @@ export default class Presentation extends React.Component {
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 6vh">
             If the new state is computed using the previous state, you can pass a function to setState. The function will receive the previous value, and return an updated value.
           </Text>
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseStateFunctionalUpdates', 'UseStateFunctionalUpdatesObject', 'UseStateFunctionalUpdatesObject2', 'UseStateFunctionalUpdatesObject3']} /></Corner>
+          {/* <Corner right="2vw" bottom="2vh"><Examples names={['UseStateFunctionalUpdates', 'UseStateFunctionalUpdatesObject', 'UseStateFunctionalUpdatesObject2', 'UseStateFunctionalUpdatesObject3']} /></Corner> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useState</Heading>
@@ -882,9 +995,9 @@ export default class Presentation extends React.Component {
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
             If the initial state is the result of an expensive computation, you may provide a function instead, which will be executed only on the initial render
           </Text>
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseStateHeavyInitialState', 'UseStateLazyInitialState']} /></Corner>
+          {/* <Corner right="2vw" bottom="2vh"><Examples names={['UseStateHeavyInitialState', 'UseStateLazyInitialState']} /></Corner> */}
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
+        {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useState</Heading>
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
             You have to use functional update if passing function to initial state:
@@ -899,7 +1012,7 @@ export default class Presentation extends React.Component {
             Otherwise it will be executed instead
           </Text>
           <Corner right="2vw" bottom="2vh"><Examples names={['UseStateFunctionalUpdatesPassingFunction']} /></Corner>
-        </FullScreenSlide>
+        </FullScreenSlide> */}
         {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useEffect</Heading>
           <CodePane
@@ -1006,7 +1119,7 @@ export default class Presentation extends React.Component {
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
             Accepts a context object (the value returned from React.createContext) and returns the current context value for that context. 
           </Text>
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseContext', 'UseContext2', 'UseContextRealistic']} /></Corner>
+          {/* <Corner right="2vw" bottom="2vh"><Examples names={['UseContext', 'UseContext2', 'UseContextRealistic']} /></Corner> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 2vw">
           <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>Rules of Hooks</Heading>
@@ -1023,7 +1136,7 @@ export default class Presentation extends React.Component {
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
             ESLint plugin enforcing the rules: <Link href="https://www.npmjs.com/package/eslint-plugin-react-hooks" target="_blank">eslint-plugin-react-hooks</Link>
           </Text>
-          <Corner right="2vw" bottom="2vh"><Examples names={['RulesOfHooks', 'ExhaustiveDeps']} /></Corner>
+          {/* <Corner right="2vw" bottom="2vh"><Examples names={['RulesOfHooks', 'ExhaustiveDeps']} /></Corner> */}
         </FullScreenSlide>
         <Slide bgImage={images.hooksBlurred}>
           <Heading size={3} caps style={{ ...styles.brain }}>Additional Hooks</Heading>
@@ -1047,7 +1160,7 @@ export default class Presentation extends React.Component {
             Lazy initialization:
           </Text>
           <CodePane source={sources.useReducerInit} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseReducer', 'UseReducerLazyInit']} /></Corner>
+          {/* <Corner right="2vw" bottom="2vh"><Examples names={['UseReducer', 'UseReducerLazyInit']} /></Corner> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useCallback</Heading>
@@ -1136,17 +1249,17 @@ export default class Presentation extends React.Component {
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain }}>Custom Hook</Heading>
           <CodePane source={sources.customHook} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseDebugValue', 'CustomUseMedia']} /></Corner>
+          {/* <Corner right="2vw" bottom="2vh"><Examples names={['UseDebugValue', 'CustomUseMedia']} /></Corner> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain }}>Custom useFormInput</Heading>
           <CodePane source={sources.customUseFormInput} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Corner right="2vw" bottom="2vh"><Examples names={['CustomUseFormInput', 'CustomUseFormInputElegant']} /></Corner>
+          {/* <Corner right="2vw" bottom="2vh"><Examples names={['CustomUseFormInput', 'CustomUseFormInputElegant']} /></Corner> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain }}>Custom useDocumentTitle</Heading>
           <CodePane source={sources.customUseDocumentTitle} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Corner right="2vw" bottom="2vh"><Examples names={['CustomUseDocumentTitle']} /></Corner>
+          {/* <Corner right="2vw" bottom="2vh"><Examples names={['CustomUseDocumentTitle']} /></Corner> */}
         </FullScreenSlide>
         <Slide>
           <BlockQuote>
@@ -1155,7 +1268,7 @@ export default class Presentation extends React.Component {
             </Quote>
             <Cite margin="10px 0 0 30px">Dan @ React Conf 2018</Cite>
           </BlockQuote>
-          <Appear><div><Corner right="2vw" bottom="2vh"><Examples names={['SeparationOfConcernsClass', 'SeparationOfConcernsHooks', 'SeparationOfConcernsCustomHooks']} /></Corner></div></Appear>
+          {/* <Appear><div><Corner right="2vw" bottom="2vh"><Examples names={['SeparationOfConcernsClass', 'SeparationOfConcernsHooks', 'SeparationOfConcernsCustomHooks']} /></Corner></div></Appear> */}
         </Slide>
         <FullScreenVideo name="separationOfConcerns" format="mp4" loop />
         {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
@@ -1190,29 +1303,24 @@ export default class Presentation extends React.Component {
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain }}>React Redux API Hooks</Heading>
           <CodePane source={sources.reactReduxApiHooks} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Corner right="2vw" bottom="2vh"><Examples names={['ReactReduxApiHooks']} /></Corner>
+          {/* <Corner right="2vw" bottom="2vh"><Examples names={['ReactReduxApiHooks']} /></Corner> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain }}>React Router API Hooks</Heading>
           <CodePane source={sources.reactRouterApiHooks} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Corner right="2vw" bottom="2vh"><Examples names={['ReactRouterApiHooks']} /></Corner>
+          {/* <Corner right="2vw" bottom="2vh"><Examples names={['ReactRouterApiHooks']} /></Corner> */}
         </FullScreenSlide>
         {/* <FullScreenSlide padding={0}>
           <iframe src="https://codesandbox.io/embed/j0y0vpz59" style={{ width: '100vw', height: '100vh', margin: 0, border: 'none' }}/>
         </FullScreenSlide> */}
 
         {/* Thanks */}
-        <FullScreenSlide bgImage={images.hooks}>
-          <Corner top="19.2vh" left="5.8vw">
-            <Heading caps style={{ ...styles.brain3D, fontSize: '14.63vh' }}>Thank You</Heading>
-          </Corner>
-          <Corner right="5.5vw" bottom="6vh">
-            <Heading caps textAlign="right" textColor="quaternary" style={{ fontSize: '7vh', lineHeight: 1.5 }}>
-              Oleksiy <span style={styles.brain3DLight}>Лёша</span> Dubovyk
-            </Heading>
-            <Heading textAlign="right" style={{ fontSize: '5vh', lineHeight: 1.2 }}><Link href="http://github.com/dubbha/react-hooks-lecture/" target="_blank" textColor="quaternary">github.com/dubbha/react-hooks-lecture</Link></Heading>
-            <Heading textAlign="right" textColor="quaternary" style={{ fontSize: '5vh', lineHeight: 1.2 }}><Link href="http://github.com/dubbha/react-hooks-examples/" target="_blank" textColor="quaternary">github.com/dubbha/react-hooks-examples</Link></Heading>
-          </Corner>
+        <FullScreenSlide bgImage={images.chernobyl}>
+          <div>
+            <img src={images.react} style={{ height: '60vh' }} />
+            <Heading caps style={{ ...styles.brain3D, fontSize: '21vh', lineHeight: 1.2 }}>Thanks</Heading>
+            <Heading caps style={{ ...styles.brain, fontSize: '5.1vh' }}>Oleksiy <span style={styles.brain3DLight}>Лёша</span> Dubovyk</Heading>
+          </div>
         </FullScreenSlide>
       </Deck>
     );

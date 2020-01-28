@@ -1,6 +1,6 @@
 import { useLocation, useParams, useRouteMatch } from 'react-router-dom';
 
-const FarFromRouter = () => {
+const DeepComponent = () => {    // not a "route component", far deep from Route
   const match = useRouteMatch();
   const location = useLocation();
   const params = useParams();

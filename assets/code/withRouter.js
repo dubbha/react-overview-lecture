@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 
-class ShowTheLocation extends Component {
+class DeepComponent extends Component {  // not a "route component", far deep from Route
   render() {
-    const { match, location, history } = this.props
+    const { match, location, history } = this.props;
 
     return (
       <>
@@ -14,4 +14,4 @@ class ShowTheLocation extends Component {
   }
 }
     
-export default withRouter(ShowTheLocation);
+export default withRouter(DeepComponent);
