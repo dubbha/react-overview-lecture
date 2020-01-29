@@ -29,13 +29,22 @@ import createTheme from '../assets/theme';
 const imageFileNames = [
   // react
   'chernobyl.jpg',
+  'chernobylBlurred.jpg',
   'react.svg',
   'books.png',
   'orly.png',
+  'virtualDom.png',
+  'propsState.png',
+  'propsState2.png',
   'componentBasics1.webp',
   'componentBasics2.webp',
   'componentBasics3.webp',
   'componentBasics4.webp',
+  'lifecycle.webp',
+  'lifecycleExtended.webp',
+  'reactDevTools.png',
+  'syncState.webp',
+
   // redux
   'collider.webp',
   'colliderBlurred.webp',
@@ -44,6 +53,7 @@ const imageFileNames = [
   'mvc.png',
   'flux.png',
   'redux.png',
+  'reduxDevTools.png',
 
   // router
   'routes.webp',
@@ -71,12 +81,47 @@ const reqImage = name => ({ [name.split('.')[0]]: require(`../assets/${name}`) }
 const images = imageFileNames.reduce((acc, name) => ({ ...acc, ...reqImage(name) }), {});
 
 const sourceFileNames = [
+  // react
+  'installCRA.js',
+  'jsx.js',
+  'jsx2.js',
+  'jsx3.js',
+  'jsx4.js',
+  'events.js',
+  'functionComponent.js',
+  'classComponent.js',
+  'classComponentWithState.js',
+  'setState.js',
+  'setState2.js',
+  'setState3.js',
+  'passingProps.js',
+  'fragment.js',
+  'hocLifecycle.js',
+  'errorBoundary.js',
+  'errorBoundaryUsage.js',
+  'propTypes.js',
+  'reactClassProperties.js',
+  'pureComponent.js',  
+
   // redux
   'reduxPrinciples1.js',
   'reduxPrinciples2.js',
   'reduxPrinciples3.js',
   'reduxPrinciples31.js',
   'combineReducers.js',
+  'actionCreators.js',
+  'createStore.js',
+  'reduxThunk.js',
+  'reduxThunk2.js',
+  'reduxThunk3.js',
+  'reduxThunkSource.js',
+  'reduxSaga.js',
+  'reduxSaga2.js',
+  'reactRedux.js',
+  'reactRedux2.js',
+  'reselect.js',
+  'reselect2.js',
+  'reselect3.js',
 
   // router
   'routerInstall.js',
@@ -295,13 +340,14 @@ export default class Presentation extends React.Component {
         controls={false}
         progress="bar"
       >
-        {/* Intro */}
+        {/* React */}
         <FullScreenSlide bgImage={images.chernobyl}>
           <Appear transitionDuration={1000}>
             <div>
               <img src={images.react} style={{ height: '60vh' }} />
               <Heading caps style={{ ...styles.brain3D, fontSize: '21vh', lineHeight: 1.2 }}>React</Heading>
               <Heading caps style={{ ...styles.brain, fontSize: '5.1vh' }}>Oleksiy <span style={styles.brain3DLight}>Лёша</span> Dubovyk</Heading>
+              {/* The Cost of Lies, The Source of Truth */}
             </div>
           </Appear>
         </FullScreenSlide>
@@ -328,6 +374,39 @@ export default class Presentation extends React.Component {
           <FullScreenImage src={images.whatever} />
           <Image src={images.devCommunity} style={{ position: 'absolute', width: '35vw', top: '40vh', marginLeft: '1vw', border: '1px solid black' }} />
         </FullScreenSlide>
+        <FullScreenSlide>
+          <BlockQuote>
+            <Quote textColor="secondary" style={{ marginBottom: '3vh', fontSize: '4.5vh', lineHeight: 1.2, borderColor: theme.screen.colors.secondary }}>
+            React is a JavaScript library for building user interfaces
+            </Quote>
+            <Cite margin="10px 0 0 30px">React Docs</Cite>
+          </BlockQuote>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '5vh', textAlign: 'left' }}>
+          Jumpstart:
+          </Text>
+          <CodePane source={sources.installCRA} style={{ maxHeight: '75vh', overflowY: 'auto' }} theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding={0}>
+          <Image src={images.reactDevTools} />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 6vw">
+          <Heading style={{ fontSize: '8vh', margin: 0 }}>
+            Virtual DOM
+          </Heading>
+          <Text textColor="secondary" style={{ fontSize: '4.5vh', marginTop: '2vh', textAlign: 'left' }}>
+          Virtual DOM is a programming concept where an ideal, or <span style={{ ...styles.brain }}>virtual</span>, representation of a UI is kept in memory and synced with the <span style={{ ...styles.brain }}>real</span> DOM by a library such as ReactDOM. This process is called <span style={{ ...styles.brain }}>reconciliation</span>.
+          </Text>
+        </FullScreenSlide>
+        <FullScreenSlide bgColor="secondary">
+          <FullScreenImage src={images.virtualDom} />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 6vw">
+          <Heading style={{ fontSize: '8vh', margin: 0 }}>
+            Component Architecture
+          </Heading>
+        </FullScreenSlide>
         <FullScreenSlide bgColor="secondary">
           <FullScreenImage src={images.componentBasics1} />
         </FullScreenSlide>
@@ -339,6 +418,206 @@ export default class Presentation extends React.Component {
         </FullScreenSlide>
         <FullScreenSlide bgColor="secondary">
           <FullScreenImage src={images.componentBasics4} />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '5vh', textAlign: 'left' }}>
+            React.createElement()
+          </Text>
+          <CodePane source={sources.jsx} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '5vh', textAlign: 'left' }}>
+            JSX
+          </Text>
+          <CodePane source={sources.jsx2} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '5vh', textAlign: 'left' }}>
+          React.createElement() vs JSX
+          </Text>
+          <CodePane source={sources.jsx3} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '5vh', textAlign: 'left' }}>
+          React.createElement() vs JSX
+          </Text>
+          <CodePane source={sources.jsx4} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vw 0">
+          <Heading style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
+            Synthetic Events
+          </Heading>
+          <List style={{ margin: '1vh 0 1vh 2vh' }}>
+            <ListItem style={{ fontSize: '4vh', margin: '0.3vh' }}>Cross-browser wrapper around browser native events</ListItem>
+            <ListItem style={{ fontSize: '4vh', margin: '0.3vh' }}>Same interface as browser native events</ListItem>
+            <ListItem style={{ fontSize: '4vh', margin: '0.3vh' }}>Use camelCase rather than lowercase</ListItem>
+            <ListItem style={{ fontSize: '4vh', margin: '0.3vh' }}>In JSX you pass a function as the event handler rather than a string</ListItem>
+          </List>
+          <CodePane source={sources.events} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="5vh">
+          <Heading style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
+          Component Props and State
+          </Heading>
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '2vh', textAlign: 'left' }}>
+          Props
+          </Text>
+          <List style={{ margin: '1vh 0 1vh 2vh' }}>
+            <ListItem style={{ fontSize: '4vh', margin: '0.3vh' }}>Like parameters to functions</ListItem>
+            <ListItem style={{ fontSize: '4vh', margin: '0.3vh' }}>Make component re-usable</ListItem>
+            <ListItem style={{ fontSize: '4vh', margin: '0.3vh' }}>Way to pass info from parent component to child component</ListItem>
+          </List>
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '2vh', textAlign: 'left' }}>
+          State
+          </Text>
+          <List style={{ margin: '1vh 0 1vh 2vh' }}>
+            <ListItem style={{ fontSize: '4vh', margin: '0.3vh' }}>Hold the current local state of the component</ListItem>
+            <ListItem style={{ fontSize: '4vh', margin: '0.3vh' }}>Stores component-specific data</ListItem>
+          </List>
+        </FullScreenSlide>
+        <FullScreenSlide bgColor="secondary">
+          <Image src={images.propsState} />
+        </FullScreenSlide>
+        <FullScreenSlide bgColor="secondary">
+          <Image src={images.propsState2} />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vh">
+          <Heading style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
+          Defining a Component in React
+          </Heading>
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '0.5vh', textAlign: 'left' }}>
+          Function component
+          </Text>
+          <CodePane source={sources.functionComponent} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '0.5vh', textAlign: 'left' }}>
+          Class component
+          </Text>
+          <CodePane source={sources.classComponent} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '0.5vh', textAlign: 'left' }}>
+          Class component can contain State
+          </Text>
+          <CodePane source={sources.classComponentWithState} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '0.5vh', textAlign: 'left' }}>
+          setState()
+          </Text>
+          <CodePane source={sources.setState} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '0.5vh', textAlign: 'left' }}>
+          setState()
+          </Text>
+          <CodePane source={sources.setState2} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '0.5vh', textAlign: 'left' }}>
+          setState() based on previous state
+          </Text>
+          <CodePane source={sources.setState3} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '0.5vh', textAlign: 'left' }}>
+          Passing props
+          </Text>
+          <CodePane source={sources.passingProps} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vh">
+          <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '0.5vh', textAlign: 'left' }}>
+          React.Fragment
+          </Text>
+          <CodePane source={sources.fragment} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vw 0">
+          <Heading caps style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
+            Typechecking
+          </Heading>
+          <List style={{ margin: '1vh 0 1vh 2vh' }}>
+            <ListItem style={{ fontSize: '4vh', margin: '0.3vh' }}><span style={{ ...styles.brain }}>PropTypes</span> – dynamic typechecking, warns to console</ListItem>
+            <ListItem style={{ fontSize: '4vh', margin: '0.3vh' }}><span style={{ ...styles.brain }}>Flow</span> – static typechecking</ListItem>
+            <ListItem style={{ fontSize: '4vh', margin: '0.3vh' }}><span style={{ ...styles.brain }}>TypeScript</span> – static typechecking</ListItem>
+          </List>
+          <CodePane source={sources.propTypes} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vw 0">
+          <CodePane source={sources.reactClassProperties} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+          <Corner right="2vw" bottom="1vh">
+            <Link href="https://codesandbox.io/s/qz74mjjx6" target="_blank" style={{ fontSize: '4vh' }}>Example</Link>
+          </Corner>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding={0}>
+          <Image src={images.lifecycle} />
+          <Corner right="0.5vw" bottom="0.5vh">
+            <Link href="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank" style={{ fontSize: '4vh' }}>Source</Link>
+          </Corner>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding={0}>
+          <Image src={images.lifecycleExtended} />
+          <Corner right="0.5vw" bottom="0.5vh">
+            <Link href="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank" style={{ fontSize: '4vh' }}>Source</Link>
+          </Corner>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 3vw">
+          <Heading style={{ fontSize: '8vh', margin: 0 }}>
+            ErrorBoundary
+          </Heading>
+          <Text textColor="secondary" style={{ fontSize: '4.5vh', marginTop: '2vh', textAlign: 'left' }}>
+          As of React 16, errors that were not caught by any error boundary will result in unmounting of the whole React component tree.
+          </Text>
+          <Text textColor="secondary" style={{ fontSize: '4.5vh', marginTop: '2vh', textAlign: 'left' }}>
+          Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.
+          </Text>
+          <Text textColor="secondary" style={{ fontSize: '4.5vh', marginTop: '2vh', textAlign: 'left' }}>
+          Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
+          </Text>
+          <CodePane source={sources.errorBoundaryUsage} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vw 0">
+          <CodePane source={sources.errorBoundary} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vh">
+          <CodePane source={sources.pureComponent} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 7vw">
+          <Heading style={{ fontSize: '8vh', margin: 0 }}>
+            Reusing Logic
+          </Heading>
+          <List>
+            <ListItem style={{ fontSize: '6vh' }}>Higher Order Components</ListItem>
+            <ListItem style={{ fontSize: '6vh' }}>Render Props</ListItem>
+          </List>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vw">
+          <Text textColor="secondary" style={{ fontSize: '3.8vh', marginTop: '2vh', textAlign: 'left' }}>
+            Higher Order Component: a function that takes a component and returns a component
+          </Text>
+          <CodePane source={sources.hoc} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vw">
+          <Text textColor="secondary" style={{ fontSize: '3.8vh', marginTop: '2vh', textAlign: 'left' }}>
+            Higher Order Component: lifecycle
+          </Text>
+          <CodePane source={sources.hocLifecycle} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vw">
+          <Text textColor="secondary" style={{ fontSize: '3.8vh', marginTop: '2vh', textAlign: 'left' }}>
+            Render Props
+          </Text>
+          <CodePane source={sources.renderProps} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vw">
+          <Text textColor="secondary" style={{ fontSize: '3.8vh', marginTop: '2vh', textAlign: 'left' }}>
+            Render Props: children variation
+          </Text>
+          <CodePane source={sources.renderPropsChildren} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding={0}>
+          <Text textColor="secondary" style={{ fontSize: '4.5vh', margin: '5vh', }}>
+            How do we synchronize states of the two sibling components?
+          </Text>
+          <Image src={images.syncState} />
         </FullScreenSlide>
 
         {/* Redux */}
@@ -395,8 +674,6 @@ export default class Presentation extends React.Component {
             <ListItem style={{ fontSize: '6vh' }}>Changes are made with pure functions</ListItem>
           </List>
         </FullScreenSlide>
-
-        
         <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
           <Heading caps style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
             Single source of truth
@@ -425,20 +702,44 @@ export default class Presentation extends React.Component {
           <CodePane source={sources.reduxPrinciples3} style={{ maxHeight: '75vh', overflowY: 'auto' }} lang="jsx" theme="light" />
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
-          <Heading caps style={{ fontSize: '5vh', margin: '0 0 2vh', textAlign: 'left' }}>
-            Changes are made with pure functions
-          </Heading>
           <CodePane source={sources.reduxPrinciples31} style={{ maxHeight: '90vh', overflowY: 'auto' }} lang="jsx" theme="light" />
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <Heading style={{ fontSize: '5vh', margin: '0 0 2vh', textAlign: 'left' }}>
+            combineReducers, createStore
+          </Heading>
           <CodePane source={sources.combineReducers} style={{ maxHeight: '99vh', overflowY: 'auto' }} lang="jsx" theme="light" />
         </FullScreenSlide>
-        
-        <Slide bgImage={images.colliderBlurred}>
-          <Heading caps style={{ ...styles.brain }}>Problem</Heading>
-          <Appear><Heading size={4} textColor="secondary">Why React Hooks?</Heading></Appear>
-          <Appear><Heading fit textColor="secondary">What problems are we trying to solve?</Heading></Appear>
-        </Slide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <Heading style={{ fontSize: '5vh', margin: '0 0 2vh', textAlign: 'left' }}>
+            Action creators
+          </Heading>
+          <CodePane source={sources.actionCreators} style={{ maxHeight: '99vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <Heading style={{ fontSize: '5vh', margin: '0 0 2vh', textAlign: 'left' }}>
+            createStore, applyMiddleware
+          </Heading>
+          <CodePane source={sources.createStore} style={{ maxHeight: '99vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <Heading style={{ fontSize: '5vh', margin: '0 0 2vh', textAlign: 'left' }}>
+            Async actions: Redux Thunk
+          </Heading>
+          <CodePane source={sources.reduxThunk} style={{ maxHeight: '99vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <CodePane source={sources.reduxThunk2} style={{ maxHeight: '99vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <CodePane source={sources.reduxThunk3} style={{ maxHeight: '99vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <Heading style={{ fontSize: '5vh', margin: '0 0 2vh', textAlign: 'left' }}>
+            Redux Thunk source code
+          </Heading>
+          <CodePane source={sources.reduxThunkSource} style={{ maxHeight: '99vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
         <Slide>
           <BlockQuote>
             <Quote textColor="secondary" style={{ marginBottom: '3vh', fontSize: '3.8vh', lineHeight: 1.2, borderColor: theme.screen.colors.secondary }}>
@@ -451,9 +752,42 @@ export default class Presentation extends React.Component {
             <Cite margin="10px 0 0 30px">Eric Elliot</Cite>
           </BlockQuote>
           <Corner right="2vw" bottom="2vh">
-          <Link href="https://medium.com/javascript-scene/do-react-hooks-replace-redux-210bab340672#a971" target="_blank" style={{ fontSize: '4vh' }}>Proof</Link>, <Link href="https://medium.com/@_ericelliott/switch-to-redux-saga-keep-side-effects-isolated-from-your-reducers-and-action-creators-8bd846aa9dd1" target="_blank" style={{ fontSize: '4vh' }}>Proof</Link>
+            <Link href="https://medium.com/javascript-scene/do-react-hooks-replace-redux-210bab340672#a971" target="_blank" style={{ fontSize: '4vh' }}>Proof</Link>, <Link href="https://medium.com/@_ericelliott/switch-to-redux-saga-keep-side-effects-isolated-from-your-reducers-and-action-creators-8bd846aa9dd1" target="_blank" style={{ fontSize: '4vh' }}>Proof</Link>
           </Corner>
         </Slide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <Heading style={{ fontSize: '5vh', margin: '0 0 2vh', textAlign: 'left' }}>
+            Async actions: Redux Saga
+          </Heading>
+          <CodePane source={sources.reduxSaga} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <CodePane source={sources.reduxSaga2} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <Heading style={{ fontSize: '5vh', margin: '0 0 2vh', textAlign: 'left' }}>
+            Usage with React: React Redux
+          </Heading>
+          <CodePane source={sources.reactRedux} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <CodePane source={sources.reactRedux2} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <Heading style={{ fontSize: '5vh', margin: '0 0 2vh', textAlign: 'left' }}>
+            Computing derived data: Reselect
+          </Heading>
+          <CodePane source={sources.reselect} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <CodePane source={sources.reselect2} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
+          <CodePane source={sources.reselect3} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.colliderBlurred} padding={0}>
+          <Image src={images.reduxDevTools} />
+        </FullScreenSlide>
 
         {/* Router */}
         <FullScreenSlide bgImage={images.routes}>
