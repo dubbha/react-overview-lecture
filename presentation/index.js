@@ -62,16 +62,12 @@ const imageFileNames = [
   'routerBasics2.webp',
   'routerBasics3.webp',
   'hashRouter.png',
-  'hashRouterOnStatic.gif',
   'browserRouter.png',
   'browserRouterOnStatic.gif',
+
   // hooks
-  'useYourBrain.webp',
-  'marvel.jpg',
-  'karloff.webp',
   'hooks.jpg',
   'hooksBlurred.jpg',
-  'danHowOld.webp',
   'whatever.jpg',
   'devCommunity.webp',
   'wrapperHell.webp',
@@ -101,7 +97,7 @@ const sourceFileNames = [
   'errorBoundaryUsage.js',
   'propTypes.js',
   'reactClassProperties.js',
-  'pureComponent.js',  
+  'pureComponent.js',
 
   // redux
   'reduxPrinciples1.js',
@@ -158,27 +154,18 @@ const sourceFileNames = [
   'useState.js',
   'useStateFunctionalUpdates.js',
   'useStateLazyInitialState.js',
-  'useStateFunctionalUpdatesPassingFunction.js',
   'useEffect.js',
   'useEffectConditional.js',
   'useEffectOnMount.js',
   'useEffectCleanup.js',
-  'useEffectFetch.js',
   'useContext.js',
   'useReducer.js',
   'useReducerInit.js',
   'useCallback.js',
   'useMemo.js',
-  'useRef.js',
-  'useImperativeHandle.js',
-  'useLayoutEffect.js',
-  'useDebugValue.js',
   'customHook.js',
   'customUseFormInput.js',
   'customUseDocumentTitle.js',
-  'customUseInitialRender.js',
-  'customUseCookie.js',
-  'customUseDebounce.js',
   'reactReduxApiHooks.js',
   'reactRouterApiHooks.js',
 ];
@@ -419,31 +406,31 @@ export default class Presentation extends React.Component {
         <FullScreenSlide bgColor="secondary">
           <FullScreenImage src={images.componentBasics4} />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 2vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '5vh', textAlign: 'left' }}>
             React.createElement()
           </Text>
           <CodePane source={sources.jsx} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 2vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '5vh', textAlign: 'left' }}>
             JSX
           </Text>
           <CodePane source={sources.jsx2} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 2vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '5vh', textAlign: 'left' }}>
           React.createElement() vs JSX
           </Text>
           <CodePane source={sources.jsx3} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 5vh">
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 2vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', marginTop: '5vh', textAlign: 'left' }}>
           React.createElement() vs JSX
           </Text>
           <CodePane source={sources.jsx4} style={{ maxHeight: '93vh', overflowY: 'auto' }} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vw 0">
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 2vw">
           <Heading style={{ fontSize: '5vh', margin: 0, textAlign: 'left' }}>
             Synthetic Events
           </Heading>
@@ -580,7 +567,7 @@ export default class Presentation extends React.Component {
         <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 0.5vh">
           <CodePane source={sources.pureComponent} style={{ maxHeight: '98vh', overflowY: 'auto' }} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 7vw">
+        <FullScreenSlide bgImage={images.chernobylBlurred} padding="0 5vw">
           <Heading style={{ fontSize: '8vh', margin: 0 }}>
             Reusing Logic
           </Heading>
@@ -632,7 +619,7 @@ export default class Presentation extends React.Component {
         <Slide bgColor="secondary">
           <Image src={images.fbCounterIssueTeam} />
         </Slide>
-        <Slide bgColor="secondary">
+        <FullScreenSlide bgColor="secondary">
           <Text caps textColor="cartoon" style={{ fontSize: '7vh', fontWeight: 'bold', margin: '5vh 0 2vh 0', textAlign: 'center' }}>
             MVC doesn't scale well
           </Text>
@@ -645,7 +632,7 @@ export default class Presentation extends React.Component {
               - system is fragile, adding new features is dangerous
               - bugs are hard to track down
           */}
-        </Slide>
+        </FullScreenSlide>
         <Slide bgColor="secondary">
           <Text caps textColor="cartoon" style={{ fontSize: '7vh', fontWeight: 'bold', margin: '5vh 0 2vh 0', textAlign: 'left' }}>
             Flux
@@ -740,21 +727,20 @@ export default class Presentation extends React.Component {
           </Heading>
           <CodePane source={sources.reduxThunkSource} style={{ maxHeight: '99vh', overflowY: 'auto' }} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <Slide>
+        <FullScreenSlide>
           <BlockQuote>
             <Quote textColor="secondary" style={{ marginBottom: '3vh', fontSize: '3.8vh', lineHeight: 1.2, borderColor: theme.screen.colors.secondary }}>
             Isolation of effects is why I prefer redux-saga over thunks
             </Quote>
-            {/* <Cite margin="10px 0 0 30px">Eric Elliot</Cite> */}
             <Quote textColor="secondary" style={{ fontSize: '3.8vh', lineHeight: 1.2, borderColor: theme.screen.colors.secondary }}>
-            Switch to redux-saga. Keep side-effects isolated from your reducers and action creators.
+            Switch to redux-saga<br/>Keep side-effects isolated from your reducers and action creators
             </Quote>
             <Cite margin="10px 0 0 30px">Eric Elliot</Cite>
           </BlockQuote>
           <Corner right="2vw" bottom="2vh">
             <Link href="https://medium.com/javascript-scene/do-react-hooks-replace-redux-210bab340672#a971" target="_blank" style={{ fontSize: '4vh' }}>Proof</Link>, <Link href="https://medium.com/@_ericelliott/switch-to-redux-saga-keep-side-effects-isolated-from-your-reducers-and-action-creators-8bd846aa9dd1" target="_blank" style={{ fontSize: '4vh' }}>Proof</Link>
           </Corner>
-        </Slide>
+        </FullScreenSlide>
         <FullScreenSlide bgImage={images.colliderBlurred} padding="0 0.5vw">
           <Heading style={{ fontSize: '5vh', margin: '0 0 2vh', textAlign: 'left' }}>
             Async actions: Redux Saga
@@ -1029,7 +1015,7 @@ export default class Presentation extends React.Component {
           </Text>
           <CodePane source={sources.location} lang="jsx" theme="light" />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.routesBlurred} padding="0 5vw">
+        <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
           <Text textColor="secondary" style={{ fontSize: '5vh', margin: '0', textAlign: 'left' }}>
             History
           </Text>
@@ -1115,7 +1101,6 @@ export default class Presentation extends React.Component {
           <Corner right="0.5vw" bottom="0.5vh"><Link href="https://github.com/supasate/connected-react-router" target="_blank" style={{ fontSize: '4vh' }}>connected-react-router</Link></Corner>
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.routesBlurred} padding="0 0.5vw">
-          {/* <Heading style={{ ...styles.brain, lineHeight: '6vh', fontSize: '5vh', margin: 0 }}>Connected React Router</Heading> */}
           <CodePane
             lang="jsx"
             source={sources.connectedReactRouter}
@@ -1124,64 +1109,27 @@ export default class Presentation extends React.Component {
           />
           <Corner right="2vw" bottom="2vh"><Link href="https://codesandbox.io/s/connected-react-router-yllkz" target="_blank" style={{ fontSize: '4vh' }}>Example</Link></Corner>
         </FullScreenSlide>
-        
-        
 
         {/* Hooks */}
-        {/* <FullScreenSlide padding="1.2em">
-          <FullScreenImage src={images.useYourBrain} />
-          <Appear>
-            <div>
-              <Corner right="1vw" bottom="2vh">
-                <Heading caps style={{ ...styles.brain, fontSize: '6.1vh' }}>
-                  Clawfinger
-                </Heading>
-                <div style={{ fontSize: '4.2vh' }}>1995 - Use Your Brain</div>
-              </Corner>
-            </div>
-          </Appear>
-        </FullScreenSlide>
-        <Slide>
-          <Image src={images.danHowOld} style={{ width: '55vw' }}/>
-          <BlockQuote>
-            <Quote textColor="secondary" style={{ fontSize: '5vh', lineHeight: 1.2, borderColor: theme.screen.colors.secondary }}>
-              When I grow up there will be a day<br/>
-              When everybody has to do what I say
-            </Quote>
-            <Cite margin="10px 0 0 30px">Dan @ 3 years old</Cite>
-          </BlockQuote>
-        </Slide>
-        <FullScreenSlide>
-          <FullScreenImage src={images.whatever} />
-          <Image src={images.devCommunity} style={{ position: 'absolute', width: '35vw', top: '40vh', marginLeft: '1vw', border: '1px solid black' }} />
-        </FullScreenSlide>
-        <Slide bgImage={images.marvel} />
-        <Slide bgImage={images.karloff} /> */}
         <FullScreenSlide bgImage={images.hooks}>
           <Corner top="19.2vh" left="5.8vw">
             <Heading caps style={{ ...styles.brain3D, fontSize: '14.63vh' }}>React Hooks</Heading>
           </Corner>
-          {/* <Corner right="5.5vw" bottom="6vh">
-            <Heading caps textAlign="right" textColor="quaternary" style={{ fontSize: '7vh' }}>performed by</Heading>
-            <Heading caps textAlign="right" textColor="quaternary" style={{ fontSize: '7vh' }}>
-              Oleksiy <span style={styles.brain3DLight}>Лёша</span> Dubovyk
-            </Heading>
-          </Corner> */}
         </FullScreenSlide>
         <Slide bgImage={images.hooksBlurred}>
           <Heading caps style={{ ...styles.brain }}>Motivation</Heading>
           <Appear><Heading size={4} textColor="secondary">Why React Hooks?</Heading></Appear>
           <Appear><Heading fit textColor="secondary">What problems are we trying to solve?</Heading></Appear>
         </Slide>
-        <Slide bgImage={images.hooksBlurred}>
+        <FullScreenSlide bgImage={images.hooksBlurred} style={{ padding: '0 20vw' }}>
           <Heading caps style={{ ...styles.brain }}>Problems</Heading>
           <List>
             <Appear><ListItem textSize="7vh" bold>Reusing Logic</ListItem></Appear>
             <Appear><ListItem textSize="7vh" bold>Giant Components</ListItem></Appear>
             <Appear><ListItem textSize="7vh" bold>Confusing Classes</ListItem></Appear>
           </List>
-        </Slide>
-        <Slide bgImage={images.hooksBlurred}>
+        </FullScreenSlide>
+        <FullScreenSlide bgImage={images.hooksBlurred} style={{ padding: '0 20vw' }}>
           <Heading size={2} style={{ ...styles.brain }}>Reusing Logic</Heading>
           <List>
             <Appear><ListItem fit bold style={{ fontSize: '7vh' }}>Higher Order Components</ListItem></Appear>
@@ -1193,43 +1141,7 @@ export default class Presentation extends React.Component {
               </Text>
             </Appear>
           </List>
-        </Slide>
-        {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em 0.6em 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1.2 }}>Higher Order Components</Heading>
-          <CodePane
-            lang="jsx"
-            source={sources.hoc}
-            theme="light"
-            style={{ maxHeight: '80vh', overflowY: 'auto' }}
-          />
-        </FullScreenSlide> */}
-        {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em 0.6em 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1.2 }}>Higher Order Components</Heading>
-          <CodePane
-            lang="jsx"
-            source={sources.hocWithRouter}
-            theme="light"
-            style={{ maxHeight: '80vh', overflowY: 'auto' }}
-          />
         </FullScreenSlide>
-        <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em 0.6em 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1.2 }}>Render Props</Heading>
-          <CodePane
-            lang="jsx"
-            source={sources.renderProps}
-            theme="light"
-            style={{ maxHeight: '80vh', overflowY: 'auto' }}
-          />
-        </FullScreenSlide>
-        <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em 0.6em 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1.2 }}>Render Props</Heading>
-          <CodePane
-            lang="jsx"
-            source={sources.renderPropsChildren}
-            theme="light"
-            style={{ maxHeight: '80vh', overflowY: 'auto' }}
-          />
-        </FullScreenSlide> */}
         <Slide transition={['zoom']} bgImage={images.wrapperHell}>
           <Heading caps style={{ ...styles.brain, lineHeight: 1.2, border: `1vh solid ${theme.screen.colors.brainDark}` }}>Wrapper Hell</Heading>
         </Slide>
@@ -1242,19 +1154,18 @@ export default class Presentation extends React.Component {
             style={{ maxHeight: '80vh', overflowY: 'auto' }}
           />
         </FullScreenSlide>
-        <Slide bgImage={images.hooksBlurred}>
+        <FullScreenSlide bgImage={images.hooksBlurred} style={{ padding: '0 10vw' }}>
           <Heading size={2} style={{ ...styles.brain }}>Confusing Classes</Heading>
           <List>
             <Appear><ListItem fit bold style={{ fontSize: '8vh' }}>Hard for Humans</ListItem></Appear>
             <Appear><ListItem bold style={{ fontSize: '8vh' }}>Hard for Machines</ListItem></Appear>
             <Appear>
               <Text textColor="secondary" textSize="6vh" margin="6vh 0 0 0">
-                Humans have problems with this.
-                <br />Classes don't minify well because method names can't be changed. Unused class methods are not stripped out. Hard for compilers to optimize.
+                Humans have problems with this.<br />Classes don't minify well because method names can't be changed.<br />Unused class methods are not stripped out.<br />Hard for compilers to optimize.
               </Text>
             </Appear>
           </List>
-        </Slide>
+        </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.6em">
           <Heading caps lineHeight={1.5} >Before Hooks...</Heading>
           <Appear><Text textColor="secondary" textSize="5.3vh">You started with a <span style={{ ...styles.brain, fontWeight: 'bold' }}>Function/Dumb/Stateless</span> component</Text></Appear>
@@ -1297,7 +1208,6 @@ export default class Presentation extends React.Component {
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">Returns a stateful value, and a function to update it.</Text>
           <Appear><Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">During the initial render, the returned state (<span style={{ ...styles.brain }}>state</span>) is the same as the value passed as the first argument (<span style={{ ...styles.brain }}>initialState</span>).</Text></Appear>
           <Appear><Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">The <span style={{ ...styles.brain }}>setState</span> function is used to update the state. It accepts a new state value and enqueues a re-render of the component.</Text></Appear>
-          {/* <Appear><div><Corner right="0.5vw" bottom="0.5vh"><Examples names={['useState', 'useStateTwoStates', 'useStateManyStates']} /></Corner></div></Appear> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useState</Heading>
@@ -1313,7 +1223,6 @@ export default class Presentation extends React.Component {
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 6vh">
             If the new state is computed using the previous state, you can pass a function to setState. The function will receive the previous value, and return an updated value.
           </Text>
-          {/* <Corner right="2vw" bottom="2vh"><Examples names={['UseStateFunctionalUpdates', 'UseStateFunctionalUpdatesObject', 'UseStateFunctionalUpdatesObject2', 'UseStateFunctionalUpdatesObject3']} /></Corner> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useState</Heading>
@@ -1329,53 +1238,7 @@ export default class Presentation extends React.Component {
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
             If the initial state is the result of an expensive computation, you may provide a function instead, which will be executed only on the initial render
           </Text>
-          {/* <Corner right="2vw" bottom="2vh"><Examples names={['UseStateHeavyInitialState', 'UseStateLazyInitialState']} /></Corner> */}
         </FullScreenSlide>
-        {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useState</Heading>
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
-            You have to use functional update if passing function to initial state:
-          </Text>
-          <CodePane
-            lang="jsx"
-            source={sources.useStateFunctionalUpdatesPassingFunction}
-            theme="light"
-            style={{ maxHeight: '80vh', overflowY: 'auto' }}
-          />
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
-            Otherwise it will be executed instead
-          </Text>
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseStateFunctionalUpdatesPassingFunction']} /></Corner>
-        </FullScreenSlide> */}
-        {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useEffect</Heading>
-          <CodePane
-            lang="jsx"
-            source={sources.useEffect}
-            theme="light"
-            style={{ maxHeight: '80vh', overflowY: 'auto' }}
-          />
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
-            Accepts a function that contains imperative, possibly effectful code:<br/>mutations, subscriptions, timers, logging, and other side effect.
-          </Text>
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseEffect']} /></Corner>
-        </FullScreenSlide> */}
-        {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useEffect</Heading>
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
-            Conditionally firing an effect:
-          </Text>
-          <CodePane
-            lang="jsx"
-            source={sources.useEffectConditional}
-            theme="light"
-            style={{ maxHeight: '80vh', overflowY: 'auto' }}
-          />
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
-            By default, effects run after every completed render, but you can choose to fire it only when certain values have changed.
-          </Text>
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseEffectConditional']} /></Corner>
-        </FullScreenSlide> */}
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useEffect</Heading>
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
@@ -1397,22 +1260,6 @@ export default class Presentation extends React.Component {
             style={{ maxHeight: '80vh', overflowY: 'auto' }}
           />
         </FullScreenSlide>
-        {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useEffect</Heading>
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
-            Firing an effect on mount:
-          </Text>
-          <CodePane
-            lang="jsx"
-            source={sources.useEffectOnMount}
-            theme="light"
-            style={{ maxHeight: '80vh', overflowY: 'auto' }}
-          />
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
-            Leave the dependency array empty to run once on mount.
-          </Text>
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseEffectOnMount']} /></Corner>
-        </FullScreenSlide> */}
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useEffect</Heading>
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
@@ -1427,21 +1274,7 @@ export default class Presentation extends React.Component {
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
           Often, effects create resources that need to be cleaned up before the component leaves the screen, such as a subscription or timer ID. To do this, the function passed to useEffect may return a clean-up function.
           </Text>
-          {/* <Corner right="2vw" bottom="2vh"><Examples names={['UseEffectCleanup']} /></Corner> */}
         </FullScreenSlide>
-        {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useEffect</Heading>
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
-            Fetching data:
-          </Text>
-          <CodePane
-            lang="jsx"
-            source={sources.useEffectFetch}
-            theme="light"
-            style={{ maxHeight: '80vh', overflowY: 'auto' }}
-          />
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseEffectFetch', 'UseEffectFetchCleanup', 'UseEffectFetchCleanupClass']} /></Corner>
-        </FullScreenSlide> */}
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useContext</Heading>
           <CodePane
@@ -1453,7 +1286,6 @@ export default class Presentation extends React.Component {
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
             Accepts a context object (the value returned from React.createContext) and returns the current context value for that context. 
           </Text>
-          {/* <Corner right="2vw" bottom="2vh"><Examples names={['UseContext', 'UseContext2', 'UseContextRealistic']} /></Corner> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 2vw">
           <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>Rules of Hooks</Heading>
@@ -1470,7 +1302,6 @@ export default class Presentation extends React.Component {
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="2vh 0 0 0">
             ESLint plugin enforcing the rules: <Link href="https://www.npmjs.com/package/eslint-plugin-react-hooks" target="_blank">eslint-plugin-react-hooks</Link>
           </Text>
-          {/* <Corner right="2vw" bottom="2vh"><Examples names={['RulesOfHooks', 'ExhaustiveDeps']} /></Corner> */}
         </FullScreenSlide>
         <Slide bgImage={images.hooksBlurred}>
           <Heading size={3} caps style={{ ...styles.brain }}>Additional Hooks</Heading>
@@ -1494,7 +1325,6 @@ export default class Presentation extends React.Component {
             Lazy initialization:
           </Text>
           <CodePane source={sources.useReducerInit} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          {/* <Corner right="2vw" bottom="2vh"><Examples names={['UseReducer', 'UseReducerLazyInit']} /></Corner> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useCallback</Heading>
@@ -1507,70 +1337,7 @@ export default class Presentation extends React.Component {
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="4vh 0 0 0">
             Returns a memoized value.
           </Text>
-          {/* <Corner right="2vw" bottom="2vh"><Examples names={['UseCallback', 'UseCallbackMemoization']} /></Corner> */}
         </FullScreenSlide>
-        {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useCallback</Heading>
-          <CodePane source={sources.useCallback} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="4vh 0 0 0">
-            Returns a memoized callback.
-          </Text>
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="4vh 0 0 0">
-            Pass an inline callback and an array of dependencies.<br/>useCallback will return a memoized version of the callback that only changes if one of the dependencies has changed.
-          </Text>
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseCallback', 'UseCallbackMemoization']} /></Corner>
-        </FullScreenSlide> */}
-        {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useMemo</Heading>
-          <CodePane source={sources.useMemo} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="4vh 0 0 0">
-            Returns a memoized value.
-          </Text>
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="4vh 0 0 0">
-            Pass a "create" function and an array of dependencies.<br/>useMemo will only recompute the memoized value when one of the dependencies has changed. This optimization helps to avoid expensive calculations on every render.
-          </Text>
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseMemoWhy', 'UseMemo', 'UseMemoWithUseCallback']} /></Corner>
-        </FullScreenSlide> */}
-        {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useRef</Heading>
-          <CodePane source={sources.useRef} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="4vh 0 0 0">
-            useRef returns a mutable ref object whose .current property is initialized to the passed argument (initialValue).
-          </Text>
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="4vh 0 0 0">
-            The returned object will persist for the full lifetime of the component.
-          </Text>
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseRef', 'UseCallbackRef', 'UseRefMeasureResize']} /></Corner>
-        </FullScreenSlide>
-        <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useImperativeHandle</Heading>
-          <CodePane source={sources.useImperativeHandle} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="4vh 0 0 0">
-            useImperativeHandle customizes the instance value that is exposed to parent components when using ref. useImperativeHandle should be used with forwardRef.
-          </Text>
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseImperativeHandle']} /></Corner>
-        </FullScreenSlide> */}
-        {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useLayoutEffect</Heading>
-          <CodePane source={sources.useLayoutEffect} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="4vh 0 0 0">
-          The signature is identical to useEffect, but it fires synchronously after all DOM mutations.
-          </Text>
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="4vh 0 0 0">
-          Use this to read layout from the DOM and synchronously re-render. Updates scheduled inside useLayoutEffect will be flushed synchronously, before the browser has a chance to paint.
-          </Text>
-          <Corner right="2vw" bottom="2vh"><Examples names={['UseLayoutEffect']} /></Corner>
-        </FullScreenSlide>
-        <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain, lineHeight: 1 }}>useDebugValue</Heading>
-          <CodePane source={sources.useDebugValue} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="4vh 0 0 0">
-            useDebugValue can be used to display a label for custom hooks in React DevTools.
-          </Text>
-          <Text textColor="secondary" textSize="5vh" textAlign="left" margin="4vh 0 0 0">
-            So we'll see it soon...
-          </Text>
-        </FullScreenSlide> */}
         <Slide bgImage={images.hooksBlurred}>
           <Heading size={3} caps style={{ ...styles.brain }}>Custom Hooks</Heading>
           <Text textColor="secondary" textSize="5vh" textAlign="left" margin="4vh 0 0 0">
@@ -1583,43 +1350,24 @@ export default class Presentation extends React.Component {
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain }}>Custom Hook</Heading>
           <CodePane source={sources.customHook} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          {/* <Corner right="2vw" bottom="2vh"><Examples names={['UseDebugValue', 'CustomUseMedia']} /></Corner> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain }}>Custom useFormInput</Heading>
           <CodePane source={sources.customUseFormInput} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          {/* <Corner right="2vw" bottom="2vh"><Examples names={['CustomUseFormInput', 'CustomUseFormInputElegant']} /></Corner> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain }}>Custom useDocumentTitle</Heading>
           <CodePane source={sources.customUseDocumentTitle} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          {/* <Corner right="2vw" bottom="2vh"><Examples names={['CustomUseDocumentTitle']} /></Corner> */}
         </FullScreenSlide>
-        <Slide>
+        <FullScreenSlide style={{ padding: '5vw' }}>
           <BlockQuote>
             <Quote textColor="secondary" style={{ fontSize: '5vh', lineHeight: 1.2, borderColor: theme.screen.colors.secondary }}>
               With hooks we separate code not based on the lifecycle method name but based on what the code is doing
             </Quote>
             <Cite margin="10px 0 0 30px">Dan @ React Conf 2018</Cite>
           </BlockQuote>
-          {/* <Appear><div><Corner right="2vw" bottom="2vh"><Examples names={['SeparationOfConcernsClass', 'SeparationOfConcernsHooks', 'SeparationOfConcernsCustomHooks']} /></Corner></div></Appear> */}
-        </Slide>
+        </FullScreenSlide>
         <FullScreenVideo name="separationOfConcerns" format="mp4" loop />
-        {/* <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain }}>Custom useInitialRender</Heading>
-          <CodePane source={sources.customUseInitialRender} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Corner right="2vw" bottom="2vh"><Examples names={['CustomUseInitialRender']} /></Corner>
-        </FullScreenSlide>
-        <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain }}>Custom useCookie</Heading>
-          <CodePane source={sources.customUseCookie} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Corner right="2vw" bottom="2vh"><Examples names={['CustomUseCookie', 'CustomUseCookieWithReload']} /></Corner>
-        </FullScreenSlide>
-        <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
-          <Heading size={3} style={{ ...styles.brain }}>Custom useDebounce</Heading>
-          <CodePane source={sources.customUseDebounce} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          <Corner right="2vw" bottom="2vh"><Examples names={['CustomUseDebounce']} /></Corner>
-        </FullScreenSlide> */}
         <Slide>
           <BlockQuote>
             <Quote textColor="secondary" style={{ fontSize: '5vh', lineHeight: 1.2, borderColor: theme.screen.colors.secondary }}>
@@ -1627,7 +1375,6 @@ export default class Presentation extends React.Component {
             </Quote>
             <Cite margin="10px 0 0 30px">Ryan Florence</Cite>
           </BlockQuote>
-          {/* <Appear><div><Corner right="2vw" bottom="2vh"><Examples names={['ReduxKiller']} /></Corner></div></Appear> */}
           <Appear><div style={{ fontSize: '4vh' }}><Corner right="2vw" bottom="2vh">useReducer + useContext = <Link href="https://codesandbox.io/s/redux-killer-c4n9b" target="_blank" style={{ fontSize: '4vh' }}>ReduxKiller</Link></Corner></div></Appear>
         </Slide>
         <Slide>
@@ -1637,16 +1384,11 @@ export default class Presentation extends React.Component {
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain }}>React Redux API Hooks</Heading>
           <CodePane source={sources.reactReduxApiHooks} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          {/* <Corner right="2vw" bottom="2vh"><Examples names={['ReactReduxApiHooks']} /></Corner> */}
         </FullScreenSlide>
         <FullScreenSlide bgImage={images.hooksBlurred} padding="0 0.4em">
           <Heading size={3} style={{ ...styles.brain }}>React Router API Hooks</Heading>
           <CodePane source={sources.reactRouterApiHooks} lang="jsx" theme="light" style={{ maxHeight: '80vh', overflowY: 'auto' }} />
-          {/* <Corner right="2vw" bottom="2vh"><Examples names={['ReactRouterApiHooks']} /></Corner> */}
         </FullScreenSlide>
-        {/* <FullScreenSlide padding={0}>
-          <iframe src="https://codesandbox.io/embed/j0y0vpz59" style={{ width: '100vw', height: '100vh', margin: 0, border: 'none' }}/>
-        </FullScreenSlide> */}
 
         {/* Thanks */}
         <FullScreenSlide bgImage={images.chernobyl}>
