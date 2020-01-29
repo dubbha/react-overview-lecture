@@ -1628,7 +1628,7 @@ export default class Presentation extends React.Component {
             <Cite margin="10px 0 0 30px">Ryan Florence</Cite>
           </BlockQuote>
           {/* <Appear><div><Corner right="2vw" bottom="2vh"><Examples names={['ReduxKiller']} /></Corner></div></Appear> */}
-          <Appear><div style={{ fontSize: '4vh' }}><Corner right="2vw" bottom="2vh">useReducer + useContext = <Example name={'ReduxKiller'} /></Corner></div></Appear>
+          <Appear><div style={{ fontSize: '4vh' }}><Corner right="2vw" bottom="2vh">useReducer + useContext = <Link href="https://codesandbox.io/s/redux-killer-c4n9b" target="_blank" style={{ fontSize: '4vh' }}>ReduxKiller</Link></Corner></div></Appear>
         </Slide>
         <Slide>
           <Image src={images.reduxKiller} />
